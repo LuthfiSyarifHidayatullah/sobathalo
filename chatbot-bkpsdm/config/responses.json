@@ -1,0 +1,98 @@
+{
+  "welcome": "Halo! Selamat datang di Layanan Informasi *BKPSDM Kabupaten Bengkayang* 🏛️\n\nSilakan pilih menu dengan mengetik angka:\n\n1️⃣ Bidang Kesejahteraan dan Informasi Kepegawaian\n2️⃣ Bidang Pengadaan dan Mutasi\n3️⃣ Bidang Pengembangan SDM Aparatur\n\n📌 Ketik *menu* kapan saja untuk kembali ke menu utama.\n📌 Ketik *0* untuk kembali ke menu sebelumnya.",
+
+  "invalid_choice": "⚠️ Maaf, pilihan tidak dikenali. Silakan ketik angka sesuai menu yang tersedia.",
+
+  "bidang": {
+    "kesejahteraan": {
+      "nama": "Bidang Kesejahteraan dan Informasi Kepegawaian",
+      "menu": "📋 *Bidang Kesejahteraan dan Informasi Kepegawaian*\n\nPilih layanan:\n1️⃣ Pengajuan Cuti\n2️⃣ Pencantuman Gelar\n0️⃣ Kembali ke Menu Utama",
+      "pelayanan": {
+        "cuti": {
+          "nama": "Pengajuan Cuti",
+          "menu": "📋 *Pengajuan Cuti*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
+          "info": {
+            "persyaratan": "📝 *Persyaratan Pengajuan Cuti:*\n\n1. Surat permohonan cuti yang ditandatangani pemohon\n2. Fotokopi SK terakhir\n3. Sisa cuti tahun berjalan masih tersedia\n4. Persetujuan atasan langsung\n5. Formulir cuti yang telah diisi lengkap\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "prosedur": "📋 *Prosedur Pengajuan Cuti:*\n\n1. Isi formulir permohonan cuti\n2. Ajukan persetujuan ke atasan langsung\n3. Serahkan berkas ke Sub Bagian Umum dan Kepegawaian\n4. Verifikasi oleh BKPSDM\n5. Penerbitan surat izin cuti\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "waktu": "⏱️ *Waktu Penyelesaian Pengajuan Cuti:*\n\nEstimasi: 3-5 hari kerja setelah berkas lengkap diterima.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "formulir": "📎 *Formulir/Tautan Pengajuan Cuti:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-cuti\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
+            "status": "🔍 *Cek Status Pengajuan Cuti:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam pengajuan cuti, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+          }
+        },
+        "gelar": {
+          "nama": "Pencantuman Gelar",
+          "menu": "📋 *Pencantuman Gelar*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
+          "info": {
+            "persyaratan": "📝 *Persyaratan Pencantuman Gelar:*\n\n1. Fotokopi ijazah yang telah dilegalisir\n2. Fotokopi transkrip nilai yang telah dilegalisir\n3. Fotokopi SK terakhir\n4. Surat pengantar dari instansi\n5. Fotokopi KTP\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "prosedur": "📋 *Prosedur Pencantuman Gelar:*\n\n1. Siapkan berkas persyaratan\n2. Ajukan surat pengantar dari instansi\n3. Serahkan berkas ke BKPSDM\n4. Verifikasi dan validasi berkas\n5. Penerbitan SK pencantuman gelar\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "waktu": "⏱️ *Waktu Penyelesaian Pencantuman Gelar:*\n\nEstimasi: 7-14 hari kerja setelah berkas lengkap diterima.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "formulir": "📎 *Formulir/Tautan Pencantuman Gelar:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-gelar\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
+            "status": "🔍 *Cek Status Pencantuman Gelar:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam pencantuman gelar, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+          }
+        }
+      }
+    },
+    "pengadaan": {
+      "nama": "Bidang Pengadaan dan Mutasi",
+      "menu": "📋 *Bidang Pengadaan dan Mutasi*\n\nPilih layanan:\n1️⃣ Kenaikan Pangkat\n2️⃣ Mutasi PNS\n0️⃣ Kembali ke Menu Utama",
+      "pelayanan": {
+        "pangkat": {
+          "nama": "Kenaikan Pangkat",
+          "menu": "📋 *Kenaikan Pangkat*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
+          "info": {
+            "persyaratan": "📝 *Persyaratan Kenaikan Pangkat:*\n\n1. Fotokopi SK pangkat terakhir\n2. Fotokopi SK jabatan terakhir\n3. Fotokopi penilaian kinerja 2 tahun terakhir\n4. Fotokopi ijazah terakhir (jika penyesuaian)\n5. Surat pengantar dari instansi\n6. Daftar riwayat hidup terbaru\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "prosedur": "📋 *Prosedur Kenaikan Pangkat:*\n\n1. Instansi mengusulkan kenaikan pangkat\n2. Pengumpulan berkas persyaratan\n3. Verifikasi oleh BKPSDM\n4. Penetapan oleh BKN/BKD\n5. Penerbitan SK kenaikan pangkat\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "waktu": "⏱️ *Waktu Penyelesaian Kenaikan Pangkat:*\n\nEstimasi: Mengikuti periode kenaikan pangkat (April dan Oktober) setiap tahun.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "formulir": "📎 *Formulir/Tautan Kenaikan Pangkat:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-pangkat\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
+            "status": "🔍 *Cek Status Kenaikan Pangkat:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Periode kenaikan pangkat\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam kenaikan pangkat, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+          }
+        },
+        "mutasi": {
+          "nama": "Mutasi PNS",
+          "menu": "📋 *Mutasi PNS*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
+          "info": {
+            "persyaratan": "📝 *Persyaratan Mutasi PNS:*\n\n1. Surat permohonan mutasi\n2. Surat persetujuan dari instansi asal\n3. Surat persetujuan dari instansi tujuan\n4. Fotokopi SK pangkat terakhir\n5. Fotokopi SK jabatan terakhir\n6. Fotokopi penilaian kinerja 2 tahun terakhir\n7. Surat keterangan tidak sedang dalam proses hukum\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "prosedur": "📋 *Prosedur Mutasi PNS:*\n\n1. Ajukan permohonan mutasi ke instansi asal\n2. Dapatkan persetujuan instansi asal dan tujuan\n3. Lengkapi berkas persyaratan\n4. Serahkan berkas ke BKPSDM\n5. Verifikasi dan proses oleh BKN\n6. Penerbitan SK mutasi\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "waktu": "⏱️ *Waktu Penyelesaian Mutasi PNS:*\n\nEstimasi: 30-90 hari kerja tergantung kelengkapan berkas dan koordinasi antar instansi.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "formulir": "📎 *Formulir/Tautan Mutasi PNS:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-mutasi\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
+            "status": "🔍 *Cek Status Mutasi PNS:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam mutasi PNS, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+          }
+        }
+      }
+    },
+    "pengembangan": {
+      "nama": "Bidang Pengembangan SDM Aparatur",
+      "menu": "📋 *Bidang Pengembangan SDM Aparatur*\n\nPilih layanan:\n1️⃣ Tugas Belajar\n2️⃣ Kenaikan Jabatan Fungsional\n0️⃣ Kembali ke Menu Utama",
+      "pelayanan": {
+        "tubel": {
+          "nama": "Tugas Belajar",
+          "menu": "📋 *Tugas Belajar*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
+          "info": {
+            "persyaratan": "📝 *Persyaratan Tugas Belajar:*\n\n1. Surat permohonan tugas belajar\n2. Rekomendasi dari atasan langsung\n3. Surat keterangan lulus seleksi perguruan tinggi\n4. Fotokopi SK pangkat terakhir\n5. Fotokopi penilaian kinerja 2 tahun terakhir\n6. Surat keterangan sehat\n7. Rencana studi\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "prosedur": "📋 *Prosedur Tugas Belajar:*\n\n1. Ajukan permohonan ke atasan langsung\n2. Dapatkan rekomendasi instansi\n3. Lulus seleksi perguruan tinggi tujuan\n4. Lengkapi berkas persyaratan\n5. Ajukan ke BKPSDM\n6. Verifikasi dan penetapan SK tugas belajar\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "waktu": "⏱️ *Waktu Penyelesaian Tugas Belajar:*\n\nEstimasi: 14-30 hari kerja setelah berkas lengkap diterima.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "formulir": "📎 *Formulir/Tautan Tugas Belajar:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-tubel\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
+            "status": "🔍 *Cek Status Tugas Belajar:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam tugas belajar, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+          }
+        },
+        "fungsional": {
+          "nama": "Kenaikan Jabatan Fungsional",
+          "menu": "📋 *Kenaikan Jabatan Fungsional*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
+          "info": {
+            "persyaratan": "📝 *Persyaratan Kenaikan Jabatan Fungsional:*\n\n1. Fotokopi SK jabatan fungsional terakhir\n2. Fotokopi PAK (Penetapan Angka Kredit) terakhir\n3. DUPAK (Daftar Usul Penetapan Angka Kredit)\n4. Bukti fisik kegiatan/karya ilmiah\n5. Fotokopi penilaian kinerja 2 tahun terakhir\n6. Surat pengantar dari instansi\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "prosedur": "📋 *Prosedur Kenaikan Jabatan Fungsional:*\n\n1. Kumpulkan bukti angka kredit\n2. Isi DUPAK\n3. Ajukan melalui instansi\n4. Penilaian oleh tim penilai\n5. Penetapan angka kredit\n6. Penerbitan SK kenaikan jabatan fungsional\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "waktu": "⏱️ *Waktu Penyelesaian Kenaikan Jabatan Fungsional:*\n\nEstimasi: 30-60 hari kerja setelah berkas lengkap diterima.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "formulir": "📎 *Formulir/Tautan Kenaikan Jabatan Fungsional:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-fungsional\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
+            "status": "🔍 *Cek Status Kenaikan Jabatan Fungsional:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
+            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam kenaikan jabatan fungsional, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+          }
+        }
+      }
+    }
+  }
+}

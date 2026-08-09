@@ -1,0 +1,17 @@
+# Environment variables (berisi data sensitif)
+.env
+
+# Database dan data runtime
+data/
+*.db
+
+# Binary hasil build
+chatbot
+chatbot.exe
+
+# Go build cache
+vendor/
+
+# OS files
+.DS_Store
+Thumbs.db
