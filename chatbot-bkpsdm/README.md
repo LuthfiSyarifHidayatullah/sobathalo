@@ -18,6 +18,9 @@ Chatbot WhatsApp berbasis menu angka untuk layanan informasi BKPSDM (Badan Kepeg
 
 ```
 chatbot-bkpsdm/
+├── run.bat                  # ⭐ Jalankan semua (setup + build + run) - double-click
+├── setup.bat                # Persiapan awal sekali saja
+├── stop.bat                 # Menghentikan chatbot
 ├── main.go                  # Entry point aplikasi
 ├── go.mod                   # Go module definition
 ├── .env.example             # Template environment variables
@@ -96,47 +99,62 @@ Navigasi: ketik **`0`** untuk kembali ke menu sebelumnya, dan **`menu`** untuk k
 3. **Git** (opsional, untuk clone repository)
    - Download: https://git-scm.com/download/win
 
-### Langkah Instalasi
+### Cara Cepat (Tanpa Ketik Perintah) — Pakai File .bat ⭐
+
+Tersedia file batch agar Anda tidak perlu menjalankan perintah manual. Cukup **double-click**:
+
+| File | Fungsi |
+|------|--------|
+| **`run.bat`** | **All-in-one.** Cek Go → buat `.env` → download dependency → build → jalankan chatbot. Cukup ini saja untuk sehari-hari. |
+| `setup.bat` | Persiapan awal sekali saja (cek prasyarat, buat `.env`, build). Berguna untuk memastikan semuanya siap sebelum dipakai. |
+| `stop.bat` | Menghentikan chatbot yang sedang berjalan. |
+
+**Langkah paling mudah:**
+
+1. Pastikan **Go** dan **GCC** sudah terpasang (lihat Prasyarat di atas).
+2. **Double-click `run.bat`**.
+3. Saat pertama kali, akan muncul tawaran mengedit `.env` (isi URL Google Script) — boleh dilewati dulu, chatbot tetap jalan dan mencatat ke CSV.
+4. QR Code akan muncul → scan dengan WhatsApp.
+5. Selesai! Bot aktif.
+
+> Untuk menjalankan lagi di lain waktu, cukup double-click `run.bat` lagi. Bot memakai sesi tersimpan sehingga tidak perlu scan ulang.
+
+### Cara Manual (Command Prompt / PowerShell)
+
+Jika lebih suka menjalankan sendiri:
 
 ```batch
-REM 1. Buka Command Prompt atau PowerShell
-
-REM 2. Masuk ke folder project
+REM 1. Masuk ke folder project
 cd chatbot-bkpsdm
 
-REM 3. Salin file konfigurasi environment
+REM 2. Salin file konfigurasi environment
 copy .env.example .env
 
-REM 4. Edit file .env dengan Notepad atau editor lain
+REM 3. Edit file .env dengan Notepad atau editor lain
 notepad .env
 
-REM 5. Download dependencies
+REM 4. Download dependencies
 go mod tidy
 
-REM 6. Build aplikasi
+REM 5. Build aplikasi
 go build -o chatbot.exe .
 
-REM 7. Jalankan aplikasi
+REM 6. Jalankan aplikasi
 chatbot.exe
 ```
 
 ### Langkah Pertama Kali (Login WhatsApp)
 
-1. Jalankan `chatbot.exe`
+1. Jalankan `run.bat` (atau `chatbot.exe`)
 2. QR Code akan muncul di terminal
-3. Buka WhatsApp di HP > **Linked Devices** > **Link a Device**
+3. Buka WhatsApp di HP > **Perangkat Tertaut (Linked Devices)** > **Tautkan Perangkat**
 4. Scan QR Code yang tampil di terminal
 5. Setelah berhasil, bot akan otomatis aktif
 6. Sesi tersimpan di `data/whatsapp.db` (tidak perlu scan ulang)
 
 ### Menjalankan Setelah Login
 
-```batch
-REM Cukup jalankan:
-chatbot.exe
-```
-
-Bot akan otomatis terhubung menggunakan sesi yang tersimpan.
+Cukup double-click **`run.bat`** lagi (atau jalankan `chatbot.exe`). Bot akan otomatis terhubung menggunakan sesi yang tersimpan.
 
 ## Panduan Menghubungkan Google Spreadsheet
 
