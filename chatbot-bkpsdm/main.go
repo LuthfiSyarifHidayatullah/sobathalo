@@ -87,7 +87,7 @@ func main() {
 
 	// Inisialisasi database store
 	dbLog := waLog.Stdout("Database", "WARN", true)
-	container, err := sqlstore.New(ctx, "sqlite3", "file:"+dbPath+"?_journal_mode=WAL&_busy_timeout=5000", dbLog)
+	container, err := sqlstore.New(ctx, "sqlite3", "file:"+dbPath+"?_foreign_keys=on&_journal_mode=WAL&_busy_timeout=5000", dbLog)
 	if err != nil {
 		fmt.Printf("Gagal membuat database store: %v\n", err)
 		os.Exit(1)
