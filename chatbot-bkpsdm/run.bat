@@ -131,8 +131,9 @@ goto end
 color 0C
 echo.
 echo [ERROR] Gagal build aplikasi.
-echo         Jika error menyebut 'gcc', install TDM-GCC dari:
-echo         https://jmeubank.github.io/tdm-gcc/
+echo         - Jika error menyebut 'gcc', install TDM-GCC dari:
+echo           https://jmeubank.github.io/tdm-gcc/
+echo         - Jika error soal versi/library, coba jalankan: update.bat
 echo         lalu jalankan run.bat lagi.
 echo.
 pause
