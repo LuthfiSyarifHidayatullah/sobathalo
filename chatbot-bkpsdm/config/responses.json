@@ -1,95 +1,406 @@
 {
-  "welcome": "Halo! Selamat datang di Layanan Informasi *BKPSDM Kabupaten Bengkayang* 🏛️\n\nSilakan pilih menu dengan mengetik angka:\n\n1️⃣ Bidang Kesejahteraan dan Informasi Kepegawaian\n2️⃣ Bidang Pengadaan dan Mutasi\n3️⃣ Bidang Pengembangan SDM Aparatur\n\n📌 Ketik *menu* kapan saja untuk kembali ke menu utama.\n📌 Ketik *0* untuk kembali ke menu sebelumnya.",
+  "welcome": "Halo! 👋 Selamat datang di *Layanan Informasi BKPSDM Kabupaten Bengkayang* 🏛️\n\nSilakan pilih bidang layanan dengan mengetik angka:\n\n1️⃣ Bidang Kesejahteraan dan Informasi Kepegawaian\n2️⃣ Bidang Pengadaan dan Mutasi Pegawai\n3️⃣ Bidang Pengembangan Sumber Daya Manusia\n\n📌 Ketik *0* untuk kembali ke menu sebelumnya.\n📌 Ketik *menu* kapan saja untuk kembali ke menu utama.",
 
   "invalid_choice": "⚠️ Maaf, pilihan tidak dikenali. Silakan ketik angka sesuai menu yang tersedia.",
 
-  "bidang": {
-    "kesejahteraan": {
-      "nama": "Bidang Kesejahteraan dan Informasi Kepegawaian",
-      "menu": "📋 *Bidang Kesejahteraan dan Informasi Kepegawaian*\n\nPilih layanan:\n1️⃣ Pengajuan Cuti\n2️⃣ Pencantuman Gelar\n0️⃣ Kembali ke Menu Utama",
-      "pelayanan": {
-        "cuti": {
-          "nama": "Pengajuan Cuti",
-          "menu": "📋 *Pengajuan Cuti*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
-          "info": {
-            "persyaratan": "📝 *Persyaratan Pengajuan Cuti:*\n\n1. Surat permohonan cuti yang ditandatangani pemohon\n2. Fotokopi SK terakhir\n3. Sisa cuti tahun berjalan masih tersedia\n4. Persetujuan atasan langsung\n5. Formulir cuti yang telah diisi lengkap\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "prosedur": "📋 *Prosedur Pengajuan Cuti:*\n\n1. Isi formulir permohonan cuti\n2. Ajukan persetujuan ke atasan langsung\n3. Serahkan berkas ke Sub Bagian Umum dan Kepegawaian\n4. Verifikasi oleh BKPSDM\n5. Penerbitan surat izin cuti\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "waktu": "⏱️ *Waktu Penyelesaian Pengajuan Cuti:*\n\nEstimasi: 3-5 hari kerja setelah berkas lengkap diterima.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "formulir": "📎 *Formulir/Tautan Pengajuan Cuti:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-cuti\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
-            "status": "🔍 *Cek Status Pengajuan Cuti:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam pengajuan cuti, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
-          }
-        },
-        "gelar": {
-          "nama": "Pencantuman Gelar",
-          "menu": "📋 *Pencantuman Gelar*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
-          "info": {
-            "persyaratan": "📝 *Persyaratan Pencantuman Gelar:*\n\n1. Fotokopi ijazah yang telah dilegalisir\n2. Fotokopi transkrip nilai yang telah dilegalisir\n3. Fotokopi SK terakhir\n4. Surat pengantar dari instansi\n5. Fotokopi KTP\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "prosedur": "📋 *Prosedur Pencantuman Gelar:*\n\n1. Siapkan berkas persyaratan\n2. Ajukan surat pengantar dari instansi\n3. Serahkan berkas ke BKPSDM\n4. Verifikasi dan validasi berkas\n5. Penerbitan SK pencantuman gelar\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "waktu": "⏱️ *Waktu Penyelesaian Pencantuman Gelar:*\n\nEstimasi: 7-14 hari kerja setelah berkas lengkap diterima.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "formulir": "📎 *Formulir/Tautan Pencantuman Gelar:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-gelar\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
-            "status": "🔍 *Cek Status Pencantuman Gelar:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam pencantuman gelar, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+  "root": {
+    "type": "menu",
+    "judul": "Menu Utama",
+    "children": {
+      "1": {
+        "type": "menu",
+        "judul": "Bidang Kesejahteraan dan Informasi Kepegawaian",
+        "deskripsi": "📋 *Bidang Kesejahteraan dan Informasi Kepegawaian*\n\nSilakan pilih layanan:",
+        "children": {
+          "1": {
+            "type": "pelayanan",
+            "judul": "Surat Keterangan Bebas Tindakan Disiplin",
+            "info": {
+              "syarat": "📝 *Syarat Surat Keterangan Bebas Tindakan Disiplin:*\n\n1. SK PNS\n2. SK CPNS\n3. Surat Rekomendasi Berjenjang\n4. Surat Bebas Tindak Pidana dari Pengadilan Negeri",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap melalui SRIKANDI\n• Mengirimkan berkas lengkap melalui WhatsApp petugas\n• Datang langsung ke Bidang Kesejahteraan dan Informasi Pegawai membawa berkas yang lengkap",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Susi Krisjuliyanti\n💼 ASDMA Ahli Pertama\n📱 089689527349"
+            }
+          },
+          "2": {
+            "type": "pelayanan",
+            "judul": "Penghargaan Satya Lencana Karya Satya",
+            "info": {
+              "syarat": "📝 *Syarat Penghargaan Satya Lencana Karya Satya:*\n\n1. Daftar Riwayat Hidup\n2. SK CPNS\n3. SK Jabatan Terakhir\n4. SK Pangkat Terakhir\n5. SLKS terakhir yang sudah dimiliki (bagi pengusul SLKS XXX dan XX)",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap melalui email kesinfopeg@gmail.com\n• Mengirimkan berkas lengkap melalui WhatsApp petugas\n• Datang langsung ke Bidang Kesejahteraan dan Informasi Pegawai membawa berkas yang lengkap",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Susi Krisjuliyanti\n💼 ASDMA Ahli Pertama\n📱 089689527349"
+            }
+          },
+          "3": {
+            "type": "pelayanan",
+            "judul": "Pengajuan Klaim Tapera",
+            "info": {
+              "syarat": "📝 *Syarat Pengajuan Klaim Tapera:*\n\n1. SK Pensiun\n2. Buku Rekening",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap melalui WhatsApp petugas\n• Datang langsung ke Bidang Kesejahteraan dan Informasi Pegawai membawa berkas yang lengkap",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Susi Krisjuliyanti\n💼 ASDMA Ahli Pertama\n📱 089689527349"
+            }
+          },
+          "4": {
+            "type": "faq",
+            "judul": "Kapan dana klaim Tapera masuk ke rekening?",
+            "jawaban": "💰 *Kapan dana klaim Tapera dapat masuk/dikirim ke rekening?*\n\nDapat dicek di link berikut:\nhttps://sitara.tapera.go.id/klaim-pengembalian"
+          },
+          "5": {
+            "type": "faq",
+            "judul": "Berapa nominal besaran Tapera saya?",
+            "jawaban": "💰 *Berapa nominal besaran Tapera saya?*\n\nDapat dicek di link berikut:\nhttps://sitara.tapera.go.id/peserta/login"
+          },
+          "6": {
+            "type": "menu",
+            "judul": "SKP / Sasaran Kinerja Pegawai",
+            "deskripsi": "📋 *SKP / Sasaran Kinerja Pegawai*\n\nSilakan pilih pertanyaan:",
+            "children": {
+              "1": {
+                "type": "faq",
+                "judul": "Tanggal di Profil/SKP tidak sesuai walaupun sudah diedit",
+                "jawaban": "❓ *Jika tanggal yang tampil di Profil atau SKP tidak sesuai? (Contoh: harusnya 1 Januari tapi tertulis 30/31 Desember, walaupun diedit tidak berubah)*\n\n✅ Cek kembali pengaturan jam dan zona waktu di laptop/komputer masing-masing."
+              },
+              "2": {
+                "type": "faq",
+                "judul": "Nama Pejabat Penilai salah di cetakan Evaluasi Kinerja",
+                "jawaban": "❓ *Mengapa di cetakan Dokumen Evaluasi Kinerja nama Pejabat Penilai salah/harusnya sudah ke Pejabat Penilai Kinerja yang baru?*\n\n✅ Silakan klik tombol *Penilaian*, kemudian pilih Periode Penilaian di mana data Atasan masih salah, klik tombol *Rencana Aksi*, lalu klik *Muat Ulang* supaya terupdate menjadi atasan yang terbaru."
+              },
+              "3": {
+                "type": "faq",
+                "judul": "Periode Penilaian Final hilang dari SKP Pegawai",
+                "jawaban": "❓ *Mengapa Periode Penilaian Final yang sudah dinilai hilang dari SKP Pegawai, padahal di akun pegawai lain masih ada?*\n\n✅ Jika hilangnya periode Final hanya terjadi di akun beberapa pegawai, silakan cek kembali Periode Rencana SKP masing-masing pegawai. Periode Final hanya akan muncul di SKP dengan Periode Akhir *31 Desember*. Kemungkinan Periode Akhir SKP pegawai tersebut dibuat tanggal lain (misalnya 30 Desember). Silakan edit Periode Akhir SKP menjadi 31 Desember, otomatis Periode Final akan tampil lagi di halaman Penilaian."
+              },
+              "4": {
+                "type": "faq",
+                "judul": "Periode Final untuk pegawai yang mutasi (beberapa periode SKP)",
+                "jawaban": "❓ *Jika pegawai memiliki beberapa Periode SKP dalam 1 tahun karena mutasi, apakah periode Final harus dibuat untuk setiap periode SKP atau hanya di periode SKP terakhir?*\n\n✅ Periode Final hanya perlu ditambahkan untuk periode SKP di jabatan definitif terakhir."
+              }
+            }
+          },
+          "7": {
+            "type": "menu",
+            "judul": "Angka Kredit",
+            "deskripsi": "📋 *Angka Kredit*\n\nSilakan pilih pertanyaan:",
+            "children": {
+              "1": {
+                "type": "faq",
+                "judul": "Pesan \"File TTD Basah Belum Diunggah\"",
+                "jawaban": "❓ *Mengapa di Angka Kredit e-Kinerja ada pesan \"File TTD Basah Belum Diunggah\"?*\n\n✅ File PAK yang sudah ditandatangani dan di-scan bisa diunggah kembali dengan klik tombol *Aksi > Unggah PAK TTD Basah*. Aksi ini bisa dilakukan di akun bawahan maupun atasan."
+              },
+              "2": {
+                "type": "faq",
+                "judul": "Angka Kredit dari SIASN tidak terakumulasi",
+                "jawaban": "❓ *Mengapa Jumlah Angka Kredit dengan sumber SIASN tidak terlihat terakumulasi? (Tidak ada keterangan \"Baru\" di bawah \"Perolehan\")*\n\n✅ Angka Kredit dari SIASN memang ketika disinkronkan dengan e-Kinerja tidak langsung dihitung akumulasinya. Tapi ketika pegawai mengklaim Angka Kredit konversi selanjutnya via e-Kinerja, angka kredit dari SIASN itu bisa terakumulasi."
+              },
+              "3": {
+                "type": "faq",
+                "judul": "Angka Kredit yang diklaim tidak terakumulasi",
+                "jawaban": "❓ *Mengapa Jumlah Angka Kredit yang diklaim di e-Kinerja tidak terakumulasi?*\n\n✅ Angka Kredit sebelumnya berada pada jenjang jabatan yang berbeda sehingga tidak dihitungkan, karena perhitungan angka kredit konversi di e-Kinerja hanya pada jenjang yang sama."
+              },
+              "4": {
+                "type": "faq",
+                "judul": "Tombol Tambah PAK tidak muncul",
+                "jawaban": "❓ *Kenapa di Menu Angka Kredit tidak muncul tombol Tambah PAK?*\n\n✅ Data Jabatan bukan sebagai jabatan fungsional tertentu."
+              },
+              "5": {
+                "type": "faq",
+                "judul": "Error \"Request failed with status code 419\"",
+                "jawaban": "❓ *Kenapa muncul pesan error \"Request failed with status code 419\"?*\n\n✅ Silakan logout lalu login lagi."
+              }
+            }
+          },
+          "8": {
+            "type": "menu",
+            "judul": "e-Kinerja Bengkayang",
+            "deskripsi": "📋 *e-Kinerja Bengkayang*\n\nSilakan pilih layanan/pertanyaan:",
+            "children": {
+              "1": {
+                "type": "faq",
+                "judul": "Cara mengubah atasan langsung/penilai di e-Kinerja Bengkayang",
+                "jawaban": "❓ *Bagaimana cara mengubah atasan langsung/atasan penilai di e-Kinerja Bengkayang?*\n\n✅ Melalui akun admin/operator instansi dengan klik tanda pensil berwarna kuning di bagian ujung pada masing-masing data pegawai, cari bagian atasan, dan sesuaikan atasan masing-masing."
+              },
+              "2": {
+                "type": "faq",
+                "judul": "Absen tidak terbaca padahal sudah absen",
+                "jawaban": "❓ *Kenapa absen saya tidak terbaca di aplikasi padahal sudah melakukan absen?*\n\n✅ Silakan cek kembali internet mesin absen kemudian cek secara berkala."
+              },
+              "3": {
+                "type": "pelayanan",
+                "judul": "Rekon Absensi",
+                "info": {
+                  "syarat": "📝 *Syarat Rekon Absensi:*\n\n1. Surat pengantar dari instansi\n2. Surat pernyataan masing-masing pegawai yang melakukan pengajuan rekon absensi\n3. Form Excel yang sesuai dari link e-Kinerja Bengkayang",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap melalui WhatsApp petugas\n• Datang langsung ke Bidang Kesejahteraan dan Informasi Pegawai membawa berkas yang lengkap",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 Septian Nanda\n💼 ASDMA Ahli Pertama\n📱 089504478848"
+                }
+              },
+              "4": {
+                "type": "pelayanan",
+                "judul": "Pengajuan Pencantuman Gelar",
+                "info": {
+                  "syarat": "📝 *Syarat Pengajuan Pencantuman Gelar:*\n\n1. Surat pengantar dari instansi\n2. File scan ijazah PDF berwarna di bawah 1MB\n3. File scan transkrip nilai PDF berwarna di bawah 1MB",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap melalui WhatsApp petugas\n• Datang langsung ke Bidang Kesejahteraan dan Informasi Pegawai membawa berkas yang lengkap",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 Septian Nanda\n💼 ASDMA Ahli Pertama\n📱 089504478848"
+                }
+              }
+            }
+          },
+          "9": {
+            "type": "menu",
+            "judul": "DMS SIASN",
+            "deskripsi": "📋 *DMS SIASN*\n\nSilakan pilih pertanyaan:",
+            "children": {
+              "1": {
+                "type": "faq",
+                "judul": "Berapa lama berkas diverifikasi admin DMS?",
+                "jawaban": "❓ *Berapa lama waktu yang dibutuhkan untuk berkas saya diverifikasi oleh admin DMS?*\n\n✅ Admin DMS akan memverifikasi berkas pengusulan setiap hari. Silakan dicek berkala untuk progress berkas pengusulan."
+              },
+              "2": {
+                "type": "faq",
+                "judul": "SPMT tidak ada, bisa diganti berkas lain?",
+                "jawaban": "❓ *Apabila SPMT saya tidak ada, apakah bisa diganti berkas lain?*\n\n✅ Bisa diganti dengan berkas Surat Perintah Penugasan saat pertama kali dilantik sebagai PNS."
+              },
+              "3": {
+                "type": "faq",
+                "judul": "Jabatan tidak sesuai, apakah bisa dihapus?",
+                "jawaban": "❓ *Apabila ada jabatan yang tidak sesuai, apakah bisa dihapus?*\n\n✅ Bisa dihapus dengan melakukan pengajuan ke admin DMS:\n\n👤 Susi Krisjuliyanti\n💼 ASDMA Ahli Pertama\n📱 089689527349"
+              }
+            }
           }
         }
-      }
-    },
-    "pengadaan": {
-      "nama": "Bidang Pengadaan dan Mutasi",
-      "menu": "📋 *Bidang Pengadaan dan Mutasi*\n\nPilih layanan:\n1️⃣ Kenaikan Pangkat\n2️⃣ Mutasi PNS\n0️⃣ Kembali ke Menu Utama",
-      "pelayanan": {
-        "pangkat": {
-          "nama": "Kenaikan Pangkat",
-          "menu": "📋 *Kenaikan Pangkat*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
-          "info": {
-            "persyaratan": "📝 *Persyaratan Kenaikan Pangkat:*\n\n1. Fotokopi SK pangkat terakhir\n2. Fotokopi SK jabatan terakhir\n3. Fotokopi penilaian kinerja 2 tahun terakhir\n4. Fotokopi ijazah terakhir (jika penyesuaian)\n5. Surat pengantar dari instansi\n6. Daftar riwayat hidup terbaru\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "prosedur": "📋 *Prosedur Kenaikan Pangkat:*\n\n1. Instansi mengusulkan kenaikan pangkat\n2. Pengumpulan berkas persyaratan\n3. Verifikasi oleh BKPSDM\n4. Penetapan oleh BKN/BKD\n5. Penerbitan SK kenaikan pangkat\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "waktu": "⏱️ *Waktu Penyelesaian Kenaikan Pangkat:*\n\nEstimasi: Mengikuti periode kenaikan pangkat (April dan Oktober) setiap tahun.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "formulir": "📎 *Formulir/Tautan Kenaikan Pangkat:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-pangkat\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
-            "status": "🔍 *Cek Status Kenaikan Pangkat:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Periode kenaikan pangkat\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam kenaikan pangkat, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
-          }
-        },
-        "mutasi": {
-          "nama": "Mutasi PNS",
-          "menu": "📋 *Mutasi PNS*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
-          "info": {
-            "persyaratan": "📝 *Persyaratan Mutasi PNS:*\n\n1. Surat permohonan mutasi\n2. Surat persetujuan dari instansi asal\n3. Surat persetujuan dari instansi tujuan\n4. Fotokopi SK pangkat terakhir\n5. Fotokopi SK jabatan terakhir\n6. Fotokopi penilaian kinerja 2 tahun terakhir\n7. Surat keterangan tidak sedang dalam proses hukum\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "prosedur": "📋 *Prosedur Mutasi PNS:*\n\n1. Ajukan permohonan mutasi ke instansi asal\n2. Dapatkan persetujuan instansi asal dan tujuan\n3. Lengkapi berkas persyaratan\n4. Serahkan berkas ke BKPSDM\n5. Verifikasi dan proses oleh BKN\n6. Penerbitan SK mutasi\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "waktu": "⏱️ *Waktu Penyelesaian Mutasi PNS:*\n\nEstimasi: 30-90 hari kerja tergantung kelengkapan berkas dan koordinasi antar instansi.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "formulir": "📎 *Formulir/Tautan Mutasi PNS:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-mutasi\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
-            "status": "🔍 *Cek Status Mutasi PNS:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam mutasi PNS, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+      },
+      "2": {
+        "type": "menu",
+        "judul": "Bidang Pengadaan dan Mutasi Pegawai",
+        "deskripsi": "📋 *Bidang Pengadaan dan Mutasi Pegawai*\n\nSilakan pilih layanan:",
+        "children": {
+          "1": {
+            "type": "pelayanan",
+            "judul": "Pengajuan Permintaan Pensiun BUP",
+            "info": {
+              "syarat": "📝 *Syarat Pengajuan Permintaan Pensiun BUP:*\n\n1. Mengisi formulir Daftar Penerima Calon Pensiun\n2. Surat permintaan pensiun dari PNS yang bersangkutan (1 rangkap)\n3. Fotokopi SK CPNS, SK PNS, SK Pangkat terakhir (1 rangkap)\n4. Fotokopi NPWP, KTP, KK, Buku Rekening Bank (1 rangkap)\n5. Fotokopi akta nikah/perkawinan (1 rangkap)\n6. Fotokopi akta kelahiran anak yang masih tertanggung (1 rangkap)\n7. SKP tahun terakhir (1 rangkap)\n8. Surat tidak pernah dijatuhi hukuman disiplin dari pimpinan unit kerja (1 rangkap)\n9. Surat pernyataan tidak sedang menjalani proses pidana atau pernah dipidana penjara berdasarkan keputusan pengadilan\n10. Pas foto 3x4 sebanyak 6 lembar",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Datang langsung ke Bidang Pengadaan dan Mutasi membawa berkas yang lengkap, bertemu dengan Ibu MARGARETHA NOVIANTI TANTRI, A.Md",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Khuznul Annisa Rani\n💼 ASDMA Ahli Pertama\n📱 085845927955"
+            }
+          },
+          "2": {
+            "type": "pelayanan",
+            "judul": "Pengajuan Permintaan Pensiun Janda/Duda",
+            "info": {
+              "syarat": "📝 *Syarat Pengajuan Permintaan Pensiun Janda/Duda:*\n\n1. Mengisi formulir Daftar Penerima Calon Pensiun\n2. Surat permintaan pensiun dari Janda/Duda yang bersangkutan (1 rangkap)\n3. Surat keterangan kematian dari kepala desa disahkan oleh camat (1 rangkap)\n4. Fotokopi akta kematian (1 rangkap)\n5. Fotokopi SK CPNS, SK PNS, SK Pangkat terakhir (1 rangkap)\n6. Fotokopi NPWP, KTP suami/istri, KK, Buku Rekening Bank ahli waris (1 rangkap)\n7. Fotokopi akta nikah/perkawinan (1 rangkap)\n8. Fotokopi akta kelahiran anak yang masih tertanggung (1 rangkap)\n9. SKP tahun terakhir (1 rangkap)\n10. Surat tidak pernah dijatuhi hukuman disiplin dari pimpinan unit kerja (1 rangkap)\n11. Surat pernyataan tidak sedang menjalani proses pidana atau pernah dipidana penjara berdasarkan keputusan pengadilan\n12. Pas foto ahli waris 3x4 sebanyak 6 lembar",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Datang langsung ke Bidang Pengadaan dan Mutasi membawa berkas yang lengkap, bertemu dengan Ibu MARGARETHA NOVIANTI TANTRI, A.Md",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Khuznul Annisa Rani\n💼 ASDMA Ahli Pertama\n📱 085845927955"
+            }
+          },
+          "3": {
+            "type": "pelayanan",
+            "judul": "Permohonan Mutasi Keluar Pemkab Bengkayang",
+            "info": {
+              "syarat": "📝 *Syarat Permohonan Mutasi Keluar Pemerintah Kabupaten Bengkayang:*\n\n1. Surat Permohonan mutasi PNS yang bersangkutan\n2. Rekomendasi/persetujuan mutasi dari atasan instansi asal\n3. Fotokopi sah keputusan dalam pangkat dan/atau jabatan terakhir\n4. Analisis jabatan dan analisis beban kerja terhadap jabatan PNS yang akan mutasi dari instansi asal dan instansi penerima, ditandatangani oleh Jabatan Pimpinan Tinggi Pratama\n5. Surat pernyataan dari instansi asal bahwa PNS yang bersangkutan tidak sedang dalam proses/menjalani hukuman disiplin dan/atau proses peradilan, dibuat oleh PPK atau pejabat lain yang menangani kepegawaian paling rendah menduduki JPT Pratama\n6. Surat pernyataan tidak sedang menjalani tugas belajar atau ikatan dinas, dibuat oleh PPK atau pejabat lain yang menangani kepegawaian paling rendah menduduki JPT Pratama dari instansi asal\n7. Surat keterangan bebas temuan yang diterbitkan dari inspektorat instansi asal",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Datang langsung ke Bidang Pengadaan dan Mutasi membawa berkas yang lengkap, bertemu dengan Ibu Tunah Ratnasari",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Gosentri Rezeki\n💼 Penata Kelola Teknologi dan Informasi\n📱 08971161387"
+            }
+          },
+          "4": {
+            "type": "pelayanan",
+            "judul": "Permohonan Mutasi Masuk Pemkab Bengkayang",
+            "info": {
+              "syarat": "📝 *Syarat Permohonan Mutasi Masuk Pemerintah Kabupaten Bengkayang:*\n\n1. Surat Permohonan mutasi PNS yang bersangkutan\n2. Rekomendasi/persetujuan mutasi dari atasan instansi asal dan surat permintaan persetujuan mutasi dari instansi penerima\n3. Fotokopi sah keputusan dalam pangkat dan/atau jabatan terakhir\n4. Fotokopi sah penilaian prestasi kerja bernilai baik dalam dua tahun terakhir\n5. Analisis jabatan dan analisis beban kerja terhadap jabatan PNS yang akan mutasi dari instansi asal dan instansi penerima, ditandatangani oleh Jabatan Pimpinan Tinggi Pratama\n6. Surat pernyataan dari instansi asal bahwa PNS yang bersangkutan tidak sedang dalam proses/menjalani hukuman disiplin dan/atau proses peradilan, dibuat oleh PPK atau pejabat lain yang menangani kepegawaian paling rendah menduduki JPT Pratama\n7. Surat pernyataan tidak sedang menjalani tugas belajar atau ikatan dinas, dibuat oleh PPK atau pejabat lain yang menangani kepegawaian paling rendah menduduki JPT Pratama dari instansi asal\n8. Surat keterangan bebas temuan yang diterbitkan dari inspektorat instansi asal\n9. Surat pernyataan tidak menuntut jabatan dan siap ditempatkan pada semua perangkat daerah di lingkungan Pemkab Bengkayang (bermaterai 10.000)\n10. Surat pernyataan tidak menuntut tambahan penghasilan dari Pemkab Bengkayang (bermaterai 10.000)\n11. Tidak sedang dalam proses usul kenaikan pangkat",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Datang langsung ke Bidang Pengadaan dan Mutasi membawa berkas yang lengkap, bertemu dengan Ibu Tunah Ratnasari",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Gosentri Rezeki\n💼 Penata Kelola Teknologi dan Informasi\n📱 08971161387"
+            }
+          },
+          "5": {
+            "type": "pelayanan",
+            "judul": "Permohonan Mutasi Antar Perangkat Daerah",
+            "info": {
+              "syarat": "📝 *Syarat Permohonan Mutasi Antar Perangkat Daerah Pemkab Bengkayang:*\n\n1. Surat Permohonan mutasi PNS yang bersangkutan ditujukan ke Bupati Bengkayang disertai alasan mutasi\n2. Surat rekomendasi dari perangkat daerah asal\n3. Surat permohonan dari perangkat daerah tujuan\n4. Anjab/ABK perangkat daerah asal PNS\n5. Anjab/ABK perangkat daerah tujuan PNS\n6. Peta Jabatan perangkat daerah asal PNS\n7. Peta Jabatan perangkat daerah tujuan PNS\n8. Penilaian prestasi kerja dua tahun terakhir",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Datang langsung ke Bidang Pengadaan dan Mutasi membawa berkas yang lengkap, bertemu dengan Ibu Tunah Ratnasari",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Gosentri Rezeki\n💼 Penata Kelola Teknologi dan Informasi\n📱 08971161387"
+            }
+          },
+          "6": {
+            "type": "pelayanan",
+            "judul": "Usul Kenaikan Gaji Berkala (KGB)",
+            "info": {
+              "syarat": "📝 *Syarat Usul Kenaikan Gaji Berkala:*\n\nKunjungi link: https://www.bkpsdm.bengkayangkab.go.id/KGB",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengisi formulir yang ada di Google Form pada link:\nhttps://www.bkpsdm.bengkayangkab.go.id/KGB",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Khuznul Annisa Rani\n💼 ASDMA Ahli Pertama\n📱 085845927955"
+            }
+          },
+          "7": {
+            "type": "pelayanan",
+            "judul": "Pengajuan Taspen",
+            "info": {
+              "syarat": "📝 *Syarat Pengajuan Taspen:*\n\n1. Mengisi Formulir Permintaan Pembayaran\n2. SK Pensiun\n3. Lembar asli SKPP dari Pemerintah Daerah\n4. Fotokopi KTP\n5. Fotokopi buku rekening pemohon\n6. Fotokopi NPWP\n7. Fotokopi SK CPNS\n8. Fotokopi surat keterangan sekolah bagi yang memiliki anak berusia 21-25 tahun",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Datang langsung ke Bidang Pengadaan dan Mutasi membawa berkas yang lengkap, bertemu dengan Ibu EVA YOHANA",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Khuznul Annisa Rani\n💼 ASDMA Ahli Pertama\n📱 085845927955"
+            }
+          },
+          "8": {
+            "type": "pelayanan",
+            "judul": "Pengajuan Peninjauan Masa Kerja (PMK)",
+            "info": {
+              "syarat": "📝 *Syarat Pengajuan Peninjauan Masa Kerja:*\n\n1. Surat kontrak kerja/SK pengangkatan\n2. Dokumen pemutusan hubungan kerja/dokumen pemberhentian\n3. SK CPNS dan PNS\n4. Ijazah saat melamar CPNS\n5. Dokumen surat keterangan kerja/paklaring\n6. Slip gaji pengalaman kerja/sebelum CPNS\n7. SK KP Terakhir",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Datang langsung ke Bidang Pengadaan dan Mutasi BKPSDM Kabupaten Bengkayang membawa berkas yang lengkap\n• Siapkan file PDF untuk semua berkas, masing-masing maksimal di bawah 1 MB",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 ZEPRIANUS AYE, SE., M.A.P\n💼 ASDMA Ahli Muda\n📱 +62 852-5202-0992"
+            }
+          },
+          "9": {
+            "type": "menu",
+            "judul": "Usul Kenaikan Pangkat",
+            "deskripsi": "📋 *Usul Kenaikan Pangkat*\n\nSilakan pilih jenis kenaikan pangkat:",
+            "children": {
+              "1": {
+                "type": "pelayanan",
+                "judul": "KP Reguler / Jabatan Fungsional Umum",
+                "info": {
+                  "syarat": "📝 *Syarat KP Reguler / Jabatan Fungsional Umum (pelaksana):*\n\n1. Asli SK Pangkat Terakhir (sekurang-kurangnya 4 tahun dalam pangkat terakhir)\n2. Asli SKP tahun 2024 minimal bernilai baik\n3. Asli SKP tahun 2025 minimal bernilai baik\n4. Asli SK Mutasi Tempat Tugas (bagi PNS yang pernah mutasi)\n5. Asli SK Peninjauan Masa Kerja (PMK) dan Nota Persetujuan Teknis dari Kepala BKN (bagi PNS yang ada PMK)",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              },
+              "2": {
+                "type": "pelayanan",
+                "judul": "KP Reguler / JFU (baru pertama kali usul KP)",
+                "info": {
+                  "syarat": "📝 *Syarat KP Reguler / JFU (pelaksana) bagi PNS yang baru pertama kali usul kenaikan pangkat:*\n\n1. Asli SK CPNS (bagi PNS yang baru pertama kali usul KP)\n2. Asli SK PNS (bagi PNS yang baru pertama kali usul KP)\n3. Asli SKP tahun 2024 minimal bernilai baik\n4. Asli SKP tahun 2025 minimal bernilai baik\n5. Asli Ijazah terakhir\n6. Asli Transkrip Nilai terakhir\n7. Asli SK Mutasi Tempat Tugas (bagi PNS yang pernah mutasi)\n8. Asli SK Peninjauan Masa Kerja (PMK) dan Nota Persetujuan Teknis dari Kepala BKN (bagi PNS yang ada PMK)",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              },
+              "3": {
+                "type": "pelayanan",
+                "judul": "KP JFU/Pelaksana (Lulus Ujian Dinas TK I) II.d ke III.a",
+                "info": {
+                  "syarat": "📝 *Syarat KP JFU/Pelaksana (bagi PNS yang telah lulus Ujian Dinas TK I) dari Gol-Ruang II.d ke III.a:*\n\n1. Asli SK Pangkat Terakhir (sekurang-kurangnya 2 tahun dalam pangkat terakhir)\n2. Asli SKP tahun 2024 minimal bernilai baik\n3. Asli SKP tahun 2025 minimal bernilai baik\n4. Asli STLUD (Surat Tanda Lulus Ujian Dinas TK I)\n5. Asli SK Mutasi Tempat Tugas (bagi PNS yang pernah mutasi)\n6. Asli SK Peninjauan Masa Kerja (PMK) dan Nota Persetujuan Teknis dari Kepala BKN (bagi PNS yang ada PMK)",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              },
+              "4": {
+                "type": "pelayanan",
+                "judul": "KP Pejabat Struktural (pangkat terendah tercapai)",
+                "info": {
+                  "syarat": "📝 *Syarat KP Pejabat Struktural & KP Pilihan bagi PNS yang menduduki Jabatan Struktural yang pangkatnya telah mencapai jenjang pangkat terendah yang ditentukan:*\n\n1. Asli SK Pangkat Terakhir (sekurang-kurangnya 4 tahun dalam pangkat terakhir)\n2. Asli SKP tahun 2024 minimal bernilai baik\n3. Asli SKP tahun 2025 minimal bernilai baik\n4. Asli SK Pengangkatan dalam Jabatan Struktural (sesuai jabatan pada SK pangkat terakhir)\n5. Asli SPP, SPMT, dan SPMJ (sesuai jabatan pada SK pangkat terakhir)\n6. Asli Sertifikat Diklat PIM III dan PIM II (jika ada)\n7. Asli BA Sumpah Janji Jabatan (khusus Pejabat Es II)\n8. Asli Rekomendasi Hasil Seleksi Terbuka JPT (khusus Pejabat Es II)\n9. Asli Scan terpisah SPP (khusus Pejabat Es II)\n10. Asli Scan terpisah SPMT (khusus Pejabat Es II)\n11. Asli Scan terpisah SPMJ (khusus Pejabat Es II)",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              },
+              "5": {
+                "type": "pelayanan",
+                "judul": "KP Pejabat Struktural (1 tingkat di bawah / Pangkat Pilihan)",
+                "info": {
+                  "syarat": "📝 *Syarat KP Pejabat Struktural & KP Pilihan bagi PNS yang pangkatnya masih 1 tingkat di bawah jenjang pangkat terendah (Pangkat Pilihan):*\n\n1. Asli SK Pangkat Terakhir (telah 1 tahun dalam pangkat terakhir)\n2. Sekurang-kurangnya telah 1 tahun dalam Jabatan Struktural yang diduduki\n3. Asli SKP tahun 2024 minimal bernilai baik\n4. Asli SKP tahun 2025 minimal bernilai baik\n5. Asli SK Pengangkatan dalam Jabatan Struktural (sesuai jabatan pada SK pangkat terakhir)\n6. Asli SPP, SPMT, dan SPMJ (sesuai jabatan pada SK pangkat terakhir)\n7. Asli Sertifikat Diklat PIM III dan PIM II (jika ada)",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              },
+              "6": {
+                "type": "pelayanan",
+                "judul": "KP Struktural Eselon III (Lulus Ujian Dinas TK II) III.d ke IV.a",
+                "info": {
+                  "syarat": "📝 *Syarat KP Struktural Eselon III (bagi PNS yang telah lulus Ujian Dinas TK II) dari Gol-Ruang III.d ke IV.a berpendidikan S-1:*\n\n1. Asli SK Pangkat Terakhir (sekurang-kurangnya 2 tahun dalam pangkat terakhir)\n2. Asli SKP tahun 2024 minimal bernilai baik\n3. Asli SKP tahun 2025 minimal bernilai baik\n4. Asli SK Pengangkatan dalam Jabatan Struktural (sesuai jabatan pada SK pangkat terakhir)\n5. Asli SPP, SPMT, dan SPMJ (sesuai jabatan pada SK pangkat terakhir)\n6. Asli Sertifikat Diklat PIM III dan PIM II (jika ada)\n7. Asli STLUD (Surat Tanda Lulus Ujian Dinas TK I)",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              },
+              "7": {
+                "type": "pelayanan",
+                "judul": "KP Jabatan Fungsional Tertentu (baru pertama kali usul)",
+                "info": {
+                  "syarat": "📝 *Syarat KP bagi PNS yang menduduki Jabatan Fungsional Tertentu (baru pertama kali usul kenaikan pangkat):*\n\n1. Asli SK CPNS (bagi PNS yang baru pertama kali usul KP)\n2. Asli SK PNS (bagi PNS yang baru pertama kali usul KP)\n3. Asli SKP tahun 2024 minimal bernilai baik\n4. Asli SKP tahun 2025 minimal bernilai baik\n5. Asli PAK Lengkap (pastikan AK sudah sesuai pada e-Kinerja BKN)\n6. Asli SK Pengangkatan dalam Jabatan Fungsional Tertentu\n7. Asli Ijazah terakhir\n8. Asli Transkrip Nilai terakhir\n9. Asli SPP, SPMT, dan SPMJ\n10. Asli Serdik bagi Guru (jika ada)\n11. Asli SK Mutasi Tempat Tugas (bagi PNS yang pernah mutasi)\n12. Asli SK Peninjauan Masa Kerja (PMK) dan Nota Persetujuan Teknis dari Kepala BKN (bagi PNS yang ada PMK)",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              },
+              "8": {
+                "type": "pelayanan",
+                "judul": "KP Jabatan Fungsional Tertentu (lanjutan)",
+                "info": {
+                  "syarat": "📝 *Syarat KP bagi PNS yang menduduki Jabatan Fungsional Tertentu (lanjutan):*\n\n1. Asli SK Pangkat Terakhir\n2. Asli SKP tahun 2024 minimal bernilai baik\n3. Asli SKP tahun 2025 minimal bernilai baik\n4. Asli Sertifikat UKOM jika naik jenjang\n5. Asli Serdik bagi Guru (jika ada)\n6. Asli PAK Lengkap (PAK Konvensional, PAK Integrasi, dan PAK Konversi; pastikan AK sudah sesuai pada e-Kinerja BKN)\n7. Asli SK Pengangkatan dalam Jabatan Fungsional Tertentu terakhir (jika dari pertama ke muda wajib melampirkan asli SK JFT dari pertama dan muda)\n8. Asli SPP, SPMT, dan SPMJ\n9. Asli SK Mutasi Tempat Tugas (bagi PNS yang pernah mutasi)\n10. Asli SK Peninjauan Masa Kerja (PMK) dan Nota Persetujuan Teknis dari Kepala BKN (bagi PNS yang ada PMK)",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              },
+              "9": {
+                "type": "pelayanan",
+                "judul": "KP bagi PNS yang memperoleh Ijazah/Penyesuaian Ijazah",
+                "info": {
+                  "syarat": "📝 *Syarat KP bagi PNS yang memperoleh Ijazah/Penyesuaian Ijazah:*\n\n1. Asli SK Pangkat Terakhir (sekurang-kurangnya 1 tahun dalam pangkat terakhir)\n2. Asli SKP tahun 2024 minimal bernilai baik\n3. Asli SKP tahun 2025 minimal bernilai baik\n4. Asli Uraian Tugas yang ditandatangani oleh pejabat Es II\n5. Asli STLUPI (Surat Tanda Lulus Ujian Penyesuaian Ijazah)\n6. Asli Ijazah Terakhir\n7. Asli Transkrip Nilai Terakhir\n8. Asli Akreditasi Perguruan Tinggi\n9. Asli Izin Belajar/Tugas Belajar (bagi yang ada)\n10. Asli Forlap Dikti\n11. Asli INFO GTK (khusus Guru)\n12. Asli PAK Konvensional, Integrasi, dan Konversi",
+                  "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dengan ketentuan format PDF di bawah 1 MB melalui WhatsApp petugas",
+                  "petugas": "📞 *Kontak Petugas:*\n\n👤 HERKULANUS ROBI, A.Md\n💼 Pranata SDM Aparatur Mahir\n📱 +62 852-8422-8887"
+                }
+              }
+            }
           }
         }
-      }
-    },
-    "pengembangan": {
-      "nama": "Bidang Pengembangan SDM Aparatur",
-      "menu": "📋 *Bidang Pengembangan SDM Aparatur*\n\nPilih layanan:\n1️⃣ Tugas Belajar\n2️⃣ Kenaikan Jabatan Fungsional\n0️⃣ Kembali ke Menu Utama",
-      "pelayanan": {
-        "tubel": {
-          "nama": "Tugas Belajar",
-          "menu": "📋 *Tugas Belajar*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
-          "info": {
-            "persyaratan": "📝 *Persyaratan Tugas Belajar:*\n\n1. Surat permohonan tugas belajar\n2. Rekomendasi dari atasan langsung\n3. Surat keterangan lulus seleksi perguruan tinggi\n4. Fotokopi SK pangkat terakhir\n5. Fotokopi penilaian kinerja 2 tahun terakhir\n6. Surat keterangan sehat\n7. Rencana studi\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "prosedur": "📋 *Prosedur Tugas Belajar:*\n\n1. Ajukan permohonan ke atasan langsung\n2. Dapatkan rekomendasi instansi\n3. Lulus seleksi perguruan tinggi tujuan\n4. Lengkapi berkas persyaratan\n5. Ajukan ke BKPSDM\n6. Verifikasi dan penetapan SK tugas belajar\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "waktu": "⏱️ *Waktu Penyelesaian Tugas Belajar:*\n\nEstimasi: 14-30 hari kerja setelah berkas lengkap diterima.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "formulir": "📎 *Formulir/Tautan Tugas Belajar:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-tubel\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
-            "status": "🔍 *Cek Status Tugas Belajar:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam tugas belajar, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
-          }
-        },
-        "fungsional": {
-          "nama": "Kenaikan Jabatan Fungsional",
-          "menu": "📋 *Kenaikan Jabatan Fungsional*\n\nPilih informasi yang dibutuhkan:\n1️⃣ Persyaratan pelayanan\n2️⃣ Prosedur pengajuan\n3️⃣ Waktu penyelesaian\n4️⃣ Formulir atau tautan pengajuan\n5️⃣ Cek status pengajuan\n6️⃣ Kendala dan hubungi petugas\n0️⃣ Kembali",
-          "info": {
-            "persyaratan": "📝 *Persyaratan Kenaikan Jabatan Fungsional:*\n\n1. Fotokopi SK jabatan fungsional terakhir\n2. Fotokopi PAK (Penetapan Angka Kredit) terakhir\n3. DUPAK (Daftar Usul Penetapan Angka Kredit)\n4. Bukti fisik kegiatan/karya ilmiah\n5. Fotokopi penilaian kinerja 2 tahun terakhir\n6. Surat pengantar dari instansi\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "prosedur": "📋 *Prosedur Kenaikan Jabatan Fungsional:*\n\n1. Kumpulkan bukti angka kredit\n2. Isi DUPAK\n3. Ajukan melalui instansi\n4. Penilaian oleh tim penilai\n5. Penetapan angka kredit\n6. Penerbitan SK kenaikan jabatan fungsional\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "waktu": "⏱️ *Waktu Penyelesaian Kenaikan Jabatan Fungsional:*\n\nEstimasi: 30-60 hari kerja setelah berkas lengkap diterima.\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "formulir": "📎 *Formulir/Tautan Kenaikan Jabatan Fungsional:*\n\nFormulir dapat diunduh di:\nhttps://bkpsdm.bengkayangkab.go.id/formulir-fungsional\n\n_(Tautan ini adalah placeholder. Tautan resmi akan diperbarui oleh admin BKPSDM.)_",
-            "status": "🔍 *Cek Status Kenaikan Jabatan Fungsional:*\n\nUntuk mengecek status pengajuan, silakan hubungi petugas BKPSDM dengan menyebutkan:\n- Nama lengkap\n- NIP\n- Tanggal pengajuan\n\nAtau cek di: https://bkpsdm.bengkayangkab.go.id/status\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_",
-            "kendala": "📞 *Kendala dan Hubungi Petugas:*\n\nJika mengalami kendala dalam kenaikan jabatan fungsional, silakan hubungi:\n\n👤 Petugas: [Nama Petugas]\n📱 WhatsApp: [Nomor WA Petugas]\n📧 Email: [Email Petugas]\n🕐 Jam Layanan: Senin-Jumat, 08.00-16.00 WIB\n\n_(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_"
+      },
+      "3": {
+        "type": "menu",
+        "judul": "Bidang Pengembangan Sumber Daya Manusia",
+        "deskripsi": "📋 *Bidang Pengembangan Sumber Daya Manusia*\n\nSilakan pilih layanan:",
+        "children": {
+          "1": {
+            "type": "pelayanan",
+            "judul": "Rekomendasi Seleksi Tugas Belajar (Mandiri & APBD)",
+            "info": {
+              "syarat": "📝 *Syarat pengajuan rekomendasi untuk mengikuti seleksi tugas belajar pendanaan biaya mandiri dan tugas belajar pendanaan penuh APBD:*\n\n1. Surat pengantar usulan tugas belajar dari perangkat daerah/unit kerja\n2. Rekomendasi mengikuti seleksi tugas belajar dari perangkat daerah berjenjang (Puskesmas–Dinas Kesehatan / Sekolah–Dinas Pendidikan)\n3. Surat keterangan calon peserta tugas belajar\n4. Dokumen rencana kebutuhan tugas belajar perangkat daerah\n5. Fotokopi SK CPNS\n6. Fotokopi SK PNS\n7. Fotokopi SK Pangkat Terakhir\n8. Surat keterangan tidak sedang dan tidak pernah dijatuhi hukuman disiplin\n9. Fotokopi SKP 2 tahun terakhir\n10. Fotokopi ijazah dan transkrip nilai terakhir yang dilegalisir\n11. Pengumuman kampus tentang penerimaan mahasiswa baru\n12. Sertifikat akreditasi program studi minimal Baik Sekali setara B",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dalam 2 rangkap ke Bagian Tata Usaha BKPSDM Kabupaten Bengkayang",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 TRI NOVIATI, S.STP, M.A.P\n💼 ASDMA Ahli Muda\n📱 +62 813-1239-6103"
+            }
+          },
+          "2": {
+            "type": "pelayanan",
+            "judul": "Berkas Administrasi Calon Tugas Belajar (Lulus)",
+            "info": {
+              "syarat": "📝 *Syarat pengajuan berkas administrasi bagi calon tugas belajar PNS yang dinyatakan lulus:*\n\n1. Surat pengantar usulan penunjukan tugas belajar oleh perangkat daerah\n2. Surat keterangan lulus Lembaga Pendidikan\n3. Surat persetujuan istri/suami bagi PNS yang sudah berkeluarga\n4. Surat pernyataan bersedia mengabdi di daerah sekurang-kurangnya 2n+1 tahun\n5. Surat pernyataan bersedia mengembalikan bantuan biaya pendidikan yang telah diterima jika mengundurkan diri atau tidak mampu menyelesaikan pendidikan (bagi PNS tugas belajar pembiayaan penuh APBD)\n6. Surat pernyataan sanggup menanggung pembiayaan selama pendidikan (bagi tugas belajar pembiayaan mandiri)\n7. Surat keputusan jabatan terakhir dan dokumen angka kredit terakhir yang menduduki jabatan fungsional\n8. Surat keterangan sehat dari rumah sakit",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dalam 2 rangkap ke Bagian Tata Usaha BKPSDM Kabupaten Bengkayang",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 TRI NOVIATI, S.STP, M.A.P\n💼 ASDMA Ahli Muda\n📱 +62 813-1239-6103"
+            }
+          },
+          "3": {
+            "type": "pelayanan",
+            "judul": "Keterangan Menyelesaikan Pendidikan",
+            "info": {
+              "syarat": "📝 *Syarat pengajuan berkas keterangan menyelesaikan pendidikan:*\n\n1. SK CPNS\n2. SK PNS\n3. SK Pangkat Terakhir\n4. Surat Izin Belajar\n5. Ijazah\n6. Transkrip Nilai\n7. Surat Rekomendasi Unit Kerja (berjenjang dari atasan; Sekolah–Dinas Pendidikan dan Kebudayaan / Puskesmas–Dinas Kesehatan Kabupaten Bengkayang)",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dalam 2 rangkap ke Bagian Tata Usaha BKPSDM Kabupaten Bengkayang",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 TRI NOVIATI, S.STP, M.A.P\n💼 ASDMA Ahli Muda\n📱 +62 813-1239-6103"
+            }
+          },
+          "4": {
+            "type": "pelayanan",
+            "judul": "Pengangkatan Pertama dalam Jabatan Fungsional",
+            "info": {
+              "syarat": "📝 *Syarat Pengangkatan Pertama dalam Jabatan Fungsional:*\n\n1. Surat pengantar dari dinas terkait\n2. Surat usulan dari dinas terkait\n3. Fotokopi SK CPNS\n4. Fotokopi SK PNS\n5. Fotokopi SPMT\n6. Fotokopi SKP 1 tahun terakhir\n7. Ijazah dan Transkrip Nilai\n8. Anjab dan ABK\n9. Sertifikat Uji Kompetensi\n10. Formasi penetapan kebutuhan MENPAN RB",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dalam 2 rangkap ke Bagian Tata Usaha BKPSDM Kabupaten Bengkayang",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Rizki Putra Kencana\n💼 Penata Kelola Teknologi dan Informasi\n📱 +62 857-5008-0006"
+            }
+          },
+          "5": {
+            "type": "pelayanan",
+            "judul": "Penetapan Kenaikan Jabatan Fungsional",
+            "info": {
+              "syarat": "📝 *Syarat Penetapan Kenaikan Jabatan dalam Jabatan Fungsional:*\n\n1. Surat pengantar dari dinas terkait\n2. Surat usulan dari dinas terkait\n3. Fotokopi PAK Lengkap 2 tahun terakhir\n4. Fotokopi SK CPNS\n5. Fotokopi SK PNS\n6. Fotokopi SK Jafung Terakhir\n7. Fotokopi SKP 1 tahun terakhir\n8. Ijazah dan Transkrip Nilai\n9. Anjab dan ABK serta peta jabatan\n10. Sertifikat Uji Kompetensi\n11. Formasi penetapan kebutuhan MENPAN RB",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dalam 2 rangkap ke Bagian Tata Usaha BKPSDM Kabupaten Bengkayang",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Rizki Putra Kencana\n💼 Penata Kelola Teknologi dan Informasi\n📱 +62 857-5008-0006"
+            }
+          },
+          "6": {
+            "type": "pelayanan",
+            "judul": "Pengangkatan JF Perpindahan dari Jabatan Lain",
+            "info": {
+              "syarat": "📝 *Syarat Pengangkatan dalam Jabatan Fungsional Perpindahan dari Jabatan Lain:*\n\n1. Surat pengantar dari dinas terkait\n2. Surat usulan dari dinas terkait\n3. Fotokopi SK CPNS\n4. Fotokopi SK PNS\n5. Fotokopi SPMT\n6. Fotokopi SKP 2 tahun terakhir\n7. Ijazah dan Transkrip Nilai\n8. Anjab dan ABK serta peta jabatan\n9. Sertifikat Uji Kompetensi\n10. Formasi penetapan kebutuhan MENPAN RB",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dalam 2 rangkap ke Bagian Tata Usaha BKPSDM Kabupaten Bengkayang",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Rizki Putra Kencana\n💼 Penata Kelola Teknologi dan Informasi\n📱 +62 857-5008-0006"
+            }
+          },
+          "7": {
+            "type": "pelayanan",
+            "judul": "Pemberhentian Jabatan Fungsional Karena Mutasi",
+            "info": {
+              "syarat": "📝 *Syarat Permohonan Pemberhentian Jabatan Fungsional Karena Mutasi:*\n\n1. Surat pengantar dari dinas terkait\n2. Surat usulan dari dinas terkait\n3. Fotokopi PAK Lengkap\n4. Fotokopi SK CPNS\n5. Fotokopi SK PNS\n6. Fotokopi SKP 1 tahun terakhir\n7. Fotokopi SK Gubernur, Pertek BKN/KANREG V BKN\n8. Anjab dan ABK serta peta jabatan di tempat lama dan tempat baru",
+              "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap dalam 2 rangkap ke Bagian Tata Usaha BKPSDM Kabupaten Bengkayang",
+              "petugas": "📞 *Kontak Petugas:*\n\n👤 Rizki Putra Kencana\n💼 Penata Kelola Teknologi dan Informasi\n📱 +62 857-5008-0006"
+            }
           }
         }
       }

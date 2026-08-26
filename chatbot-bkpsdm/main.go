@@ -32,7 +32,7 @@ func main() {
 	_ = godotenv.Load()
 
 	// ===== MUAT KONFIGURASI RESPONS =====
-	responses, err := config.LoadResponses()
+	root, err := config.Load()
 	if err != nil {
 		fmt.Printf("Gagal memuat konfigurasi: %v\n", err)
 		os.Exit(1)
@@ -68,7 +68,7 @@ func main() {
 	sessionMgr := session.NewManager()
 
 	// ===== SETUP HANDLER =====
-	msgHandler := handler.NewHandler(responses, sessionMgr, log)
+	msgHandler := handler.NewHandler(root, sessionMgr, log)
 
 	// ===== SETUP WHATSMEOW =====
 	dbPath := os.Getenv("DB_PATH")
