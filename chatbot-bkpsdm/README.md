@@ -112,6 +112,7 @@ Tersedia file batch agar Anda tidak perlu menjalankan perintah manual. Cukup **d
 | `stop.bat` | Menghentikan chatbot yang sedang berjalan. |
 | `buat-shortcut-desktop.bat` | Membuat ikon **"Chatbot BKPSDM"** di Desktop. Jalankan sekali; setelah itu cukup double-click ikon di Desktop. |
 | `run-admin.bat` | Menjalankan chatbot dengan hak **Administrator** (otomatis minta izin UAC). Pakai hanya jika `run.bat` bermasalah karena izin/firewall. |
+| **`update.bat`** | **Perbarui library WhatsMeow ke versi terbaru.** Jalankan jika muncul error `Client outdated (405)`. |
 
 **Ingin ikon di Desktop?** Double-click **`buat-shortcut-desktop.bat`** satu kali. Setelah itu, cukup double-click ikon "Chatbot BKPSDM" di Desktop kapan saja untuk menjalankan bot.
 
@@ -377,11 +378,21 @@ BOT: ❓ *Kenapa muncul pesan error "Request failed with status code 419"?*
 
 | Masalah | Solusi |
 |---------|--------|
+| `Client outdated (405) connect failure` | Library WhatsMeow sudah usang. **Jalankan `update.bat`** untuk mengambil versi terbaru, lalu jalankan `run.bat` lagi. |
+| `websocket: close 1006` | Biasanya menyertai error 405 di atas. Jalankan `update.bat`. |
 | QR Code tidak muncul | Pastikan terminal mendukung karakter Unicode. Coba Windows Terminal |
 | Error "gcc not found" | Install TDM-GCC dan pastikan ada di PATH |
 | Bot tidak membalas | Cek apakah pesan dikirim ke chat pribadi (bukan grup) |
 | Google Sheets tidak terisi | Cek URL di .env, pastikan Web App sudah di-deploy |
 | "Gagal memuat konfigurasi" | Pastikan file `config/responses.json` ada dan valid JSON |
+
+### ⚠️ Tentang Error "Client outdated (405)"
+
+WhatsApp secara berkala memperbarui protokol Web-nya. Ketika itu terjadi, versi library WhatsMeow yang lama akan **ditolak** dan muncul error:
+```
+Client ERROR Client outdated (405) connect failure
+```
+Ini **normal** dan bukan bug pada kode. **Solusi:** jalankan **`update.bat`** (mengambil WhatsMeow terbaru + build ulang), lalu jalankan `run.bat`. Jika suatu saat error ini muncul lagi (beberapa bulan ke depan), cukup ulangi langkah yang sama.
 
 ## Lisensi
 
