@@ -1,5 +1,4 @@
 @echo off
-setlocal enabledelayedexpansion
 REM ============================================================
 REM  RUN ALL - Chatbot WhatsApp BKPSDM Kabupaten Bengkayang
 REM ------------------------------------------------------------
@@ -27,40 +26,47 @@ echo.
 REM ---------- 1. Cek Go ----------
 echo [1/6] Memeriksa instalasi Go...
 where go >nul 2>nul
-if %errorlevel% neq 0 goto no_go
-for /f "tokens=3" %%v in ('go version') do set "GOVER=%%v"
-echo       OK - Go !GOVER! terpasang.
+if %errorlevel% neq 0 (
+    color 0C
+    echo.
+    echo [ERROR] Go tidak ditemukan di sistem Anda.
+    echo         Silakan install Go terlebih dahulu dari:
+    echo         https://go.dev/dl/
+    echo.
+    echo         Setelah install, TUTUP jendela ini dan jalankan lagi run.bat
+    echo.
+    pause
+    exit /b 1
+)
+for /f "tokens=3" %%v in ('go version') do set GOVER=%%v
+echo       OK - Go %GOVER% terpasang.
 echo.
 
 REM ---------- 2. Cek / buat file .env ----------
 echo [2/6] Memeriksa file konfigurasi .env...
-if exist ".env" goto env_ready
-if not exist ".env.example" goto env_missing_example
-
-copy ".env.example" ".env" >nul
-echo       File .env dibuat dari .env.example.
-echo.
-color 0E
-echo ------------------------------------------------------------
-echo   PERHATIAN: Silakan edit file .env untuk mengisi
-echo   GOOGLE_SCRIPT_URL dan GOOGLE_SCRIPT_TOKEN.
-echo   (Chatbot tetap bisa jalan tanpa itu, data disimpan ke CSV.)
-echo ------------------------------------------------------------
-color 0A
-echo.
-choice /c YT /n /m "Buka file .env sekarang untuk diedit? (Y=Ya, T=Tidak): "
-if errorlevel 2 goto env_done
-notepad .env
-goto env_done
-
-:env_missing_example
-echo       [WARNING] .env.example tidak ditemukan, melewati langkah ini.
-goto env_done
-
-:env_ready
-echo       OK - File .env sudah ada.
-
-:env_done
+if not exist ".env" (
+    if exist ".env.example" (
+        copy ".env.example" ".env" >nul
+        echo       File .env dibuat dari .env.example.
+        echo.
+        color 0E
+        echo ------------------------------------------------------------
+        echo   PERHATIAN: Silakan edit file .env untuk mengisi
+        echo   GOOGLE_SCRIPT_URL dan GOOGLE_SCRIPT_TOKEN.
+        echo   (Chatbot tetap bisa jalan tanpa itu, data disimpan ke CSV.)
+        echo ------------------------------------------------------------
+        color 0A
+        echo.
+        choice /c YT /n /m "Buka file .env sekarang untuk diedit? (Y=Ya, T=Tidak): "
+        if errorlevel 2 goto skip_env
+        if errorlevel 1 notepad .env
+        :skip_env
+    ) else (
+        echo       [WARNING] .env.example tidak ditemukan, melewati langkah ini.
+    )
+) else (
+    echo       OK - File .env sudah ada.
+)
 echo.
 
 REM ---------- 3. Buat folder data ----------
@@ -73,14 +79,34 @@ REM ---------- 4. Unduh dependency ----------
 echo [4/6] Mengunduh dependency (go mod tidy)...
 echo       (Proses ini mungkin memakan waktu saat pertama kali dijalankan)
 go mod tidy
-if %errorlevel% neq 0 goto err_deps
+if %errorlevel% neq 0 (
+    color 0C
+    echo.
+    echo [ERROR] Gagal mengunduh dependency.
+    echo         Pastikan koneksi internet aktif, lalu coba lagi.
+    echo         Jika ada error soal 'gcc', install TDM-GCC dari:
+    echo         https://jmeubank.github.io/tdm-gcc/
+    echo.
+    pause
+    exit /b 1
+)
 echo       OK - Dependency siap.
 echo.
 
 REM ---------- 5. Build aplikasi ----------
 echo [5/6] Membangun aplikasi (build)...
 go build -o chatbot.exe .
-if %errorlevel% neq 0 goto err_build
+if %errorlevel% neq 0 (
+    color 0C
+    echo.
+    echo [ERROR] Gagal build aplikasi.
+    echo         Jika error menyebut 'gcc', install TDM-GCC dari:
+    echo         https://jmeubank.github.io/tdm-gcc/
+    echo         lalu jalankan run.bat lagi.
+    echo.
+    pause
+    exit /b 1
+)
 echo       OK - Build berhasil (chatbot.exe).
 echo.
 
@@ -100,44 +126,3 @@ echo ============================================================
 echo   Chatbot berhenti.
 echo ============================================================
 pause
-goto end
-
-REM ==================== BAGIAN ERROR ====================
-
-:no_go
-color 0C
-echo.
-echo [ERROR] Go tidak ditemukan di sistem Anda.
-echo         Silakan install Go terlebih dahulu dari:
-echo         https://go.dev/dl/
-echo.
-echo         Setelah install, TUTUP jendela ini dan jalankan lagi run.bat
-echo.
-pause
-goto end
-
-:err_deps
-color 0C
-echo.
-echo [ERROR] Gagal mengunduh dependency.
-echo         Pastikan koneksi internet aktif, lalu coba lagi.
-echo         Jika ada error soal 'gcc', install TDM-GCC dari:
-echo         https://jmeubank.github.io/tdm-gcc/
-echo.
-pause
-goto end
-
-:err_build
-color 0C
-echo.
-echo [ERROR] Gagal build aplikasi.
-echo         - Jika error menyebut 'gcc', install TDM-GCC dari:
-echo           https://jmeubank.github.io/tdm-gcc/
-echo         - Jika error soal versi/library, coba jalankan: update.bat
-echo         lalu jalankan run.bat lagi.
-echo.
-pause
-goto end
-
-:end
-endlocal
