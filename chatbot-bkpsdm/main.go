@@ -82,19 +82,16 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Context utama aplikasi
-	ctx := context.Background()
-
 	// Inisialisasi database store
 	dbLog := waLog.Stdout("Database", "WARN", true)
-	container, err := sqlstore.New(ctx, "sqlite3", "file:"+dbPath+"?_journal_mode=WAL&_busy_timeout=5000", dbLog)
+	container, err := sqlstore.New("sqlite3", "file:"+dbPath+"?_journal_mode=WAL&_busy_timeout=5000", dbLog)
 	if err != nil {
 		fmt.Printf("Gagal membuat database store: %v\n", err)
 		os.Exit(1)
 	}
 
 	// Ambil device store (sesi pertama yang tersimpan, atau buat baru)
-	deviceStore, err := container.GetFirstDevice(ctx)
+	deviceStore, err := container.GetFirstDevice()
 	if err != nil {
 		fmt.Printf("Gagal mengambil device store: %v\n", err)
 		os.Exit(1)
