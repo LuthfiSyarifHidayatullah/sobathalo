@@ -19,8 +19,10 @@ Chatbot WhatsApp berbasis menu angka untuk layanan informasi BKPSDM (Badan Kepeg
 ```
 chatbot-bkpsdm/
 ├── run.bat                  # ⭐ Jalankan semua (setup + build + run) - double-click
+├── run-admin.bat            # Jalankan dengan hak Administrator (UAC)
 ├── setup.bat                # Persiapan awal sekali saja
 ├── stop.bat                 # Menghentikan chatbot
+├── buat-shortcut-desktop.bat # Buat ikon "Chatbot BKPSDM" di Desktop
 ├── main.go                  # Entry point aplikasi
 ├── go.mod                   # Go module definition
 ├── .env.example             # Template environment variables
@@ -108,6 +110,12 @@ Tersedia file batch agar Anda tidak perlu menjalankan perintah manual. Cukup **d
 | **`run.bat`** | **All-in-one.** Cek Go → buat `.env` → download dependency → build → jalankan chatbot. Cukup ini saja untuk sehari-hari. |
 | `setup.bat` | Persiapan awal sekali saja (cek prasyarat, buat `.env`, build). Berguna untuk memastikan semuanya siap sebelum dipakai. |
 | `stop.bat` | Menghentikan chatbot yang sedang berjalan. |
+| `buat-shortcut-desktop.bat` | Membuat ikon **"Chatbot BKPSDM"** di Desktop. Jalankan sekali; setelah itu cukup double-click ikon di Desktop. |
+| `run-admin.bat` | Menjalankan chatbot dengan hak **Administrator** (otomatis minta izin UAC). Pakai hanya jika `run.bat` bermasalah karena izin/firewall. |
+
+**Ingin ikon di Desktop?** Double-click **`buat-shortcut-desktop.bat`** satu kali. Setelah itu, cukup double-click ikon "Chatbot BKPSDM" di Desktop kapan saja untuk menjalankan bot.
+
+> 💡 Disarankan jalankan `setup.bat` (atau `run.bat`) minimal sekali agar `chatbot.exe` sudah ter-build sebelum membuat shortcut — supaya ikonnya tampil bagus.
 
 **Langkah paling mudah:**
 
