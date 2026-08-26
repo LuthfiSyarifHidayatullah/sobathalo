@@ -1,222 +1,271 @@
 package handler
 
 import (
+	"sort"
+	"strconv"
+	"strings"
+	"time"
+
 	"chatbot-bkpsdm/config"
 	"chatbot-bkpsdm/logger"
 	"chatbot-bkpsdm/session"
-	"strings"
-	"time"
 )
 
-// Handler mengelola logika menu chatbot
+// Handler mengelola logika navigasi menu chatbot berbasis pohon (tree) rekursif.
 type Handler struct {
-	responses *config.Responses
-	sessions  *session.Manager
-	log       *logger.Logger
+	root     *config.Root
+	sessions *session.Manager
+	log      *logger.Logger
 }
 
-// NewHandler membuat Handler baru
-func NewHandler(responses *config.Responses, sessions *session.Manager, log *logger.Logger) *Handler {
+// NewHandler membuat Handler baru.
+func NewHandler(root *config.Root, sessions *session.Manager, log *logger.Logger) *Handler {
 	return &Handler{
-		responses: responses,
-		sessions:  sessions,
-		log:       log,
+		root:     root,
+		sessions: sessions,
+		log:      log,
 	}
 }
 
-// bidangKeys memetakan nomor pilihan ke key bidang
-var bidangKeys = map[string]string{
-	"1": "kesejahteraan",
-	"2": "pengadaan",
-	"3": "pengembangan",
-}
-
-// pelayananKeys memetakan nomor pilihan ke key pelayanan per bidang
-var pelayananKeys = map[string]map[string]string{
-	"kesejahteraan": {
-		"1": "cuti",
-		"2": "gelar",
-	},
-	"pengadaan": {
-		"1": "pangkat",
-		"2": "mutasi",
-	},
-	"pengembangan": {
-		"1": "tubel",
-		"2": "fungsional",
-	},
-}
-
-// infoKeys memetakan nomor pilihan ke key informasi
-var infoKeys = map[string]string{
-	"1": "persyaratan",
-	"2": "prosedur",
-	"3": "waktu",
-	"4": "formulir",
-	"5": "status",
-	"6": "kendala",
-}
-
-// infoLabels label untuk pencatatan
-var infoLabels = map[string]string{
-	"1": "Persyaratan pelayanan",
-	"2": "Prosedur pengajuan",
-	"3": "Waktu penyelesaian",
-	"4": "Formulir atau tautan pengajuan",
-	"5": "Cek status pengajuan",
-	"6": "Kendala dan hubungi petugas",
-}
-
-// HandleMessage memproses pesan masuk dan mengembalikan respons
+// HandleMessage memproses pesan masuk dan mengembalikan teks balasan.
 func (h *Handler) HandleMessage(userID, pushName, messageID, messageText string) string {
 	input := strings.TrimSpace(messageText)
 	inputLower := strings.ToLower(input)
 
-	state := h.sessions.Get(userID)
-
-	// Perintah "menu" selalu kembali ke menu utama
+	// Perintah "menu" selalu kembali ke menu utama.
 	if inputLower == "menu" {
 		h.sessions.Reset(userID)
-		h.logMessage(userID, pushName, messageID, input, "", "", "Menu utama", "terjawab")
-		return h.responses.Welcome
+		h.record(userID, pushName, messageID, input, nil, "Menu utama", "terjawab")
+		return h.render(h.root.Root, true)
 	}
 
-	// Proses berdasarkan level state
-	switch state.Level {
-	case "main":
-		return h.handleMainMenu(userID, pushName, messageID, input)
-	case "bidang":
-		return h.handleBidangMenu(userID, pushName, messageID, input, state)
-	case "pelayanan":
-		return h.handlePelayananMenu(userID, pushName, messageID, input, state)
+	state := h.sessions.Get(userID)
+
+	// Node saat ini berdasarkan path tersimpan.
+	current := h.nodeAt(state.Path)
+	if current == nil {
+		// Path tidak valid (mis. konfigurasi berubah). Reset ke menu utama.
+		h.sessions.Reset(userID)
+		return h.render(h.root.Root, true)
+	}
+
+	// Pilihan "0" = kembali ke node induk.
+	if input == "0" {
+		if len(state.Path) == 0 {
+			// Sudah di menu utama, tetap tampilkan menu utama.
+			h.record(userID, pushName, messageID, input, state.Path, "Menu utama", "terjawab")
+			return h.render(h.root.Root, true)
+		}
+		parentPath := state.Path[:len(state.Path)-1]
+		h.sessions.SetPath(userID, parentPath)
+		parent := h.nodeAt(parentPath)
+		h.record(userID, pushName, messageID, input, parentPath, "Kembali", "terjawab")
+		return h.render(parent, len(parentPath) == 0)
+	}
+
+	// Penanganan berdasarkan tipe node saat ini.
+	switch current.Type {
+	case config.TypeMenu:
+		return h.handleMenu(userID, pushName, messageID, input, state.Path, current)
+	case config.TypePelayanan:
+		return h.handlePelayanan(userID, pushName, messageID, input, state.Path, current)
 	default:
+		// FAQ tidak seharusnya menjadi node aktif (langsung ditampilkan). Reset.
 		h.sessions.Reset(userID)
-		return h.responses.Welcome
+		return h.render(h.root.Root, true)
 	}
 }
 
-// handleMainMenu menangani pilihan di menu utama
-func (h *Handler) handleMainMenu(userID, pushName, messageID, input string) string {
-	bidangKey, exists := bidangKeys[input]
-	if !exists {
-		h.logMessage(userID, pushName, messageID, input, "", "", "", "tidak_dikenali")
-		return h.responses.InvalidChoice + "\n\n" + h.responses.Welcome
+// handleMenu menangani pemilihan anak pada node bertipe "menu".
+func (h *Handler) handleMenu(userID, pushName, messageID, input string, path []string, node *config.Node) string {
+	child, ok := node.Children[input]
+	if !ok {
+		h.record(userID, pushName, messageID, input, path, "", "tidak_dikenali")
+		return h.root.InvalidChoice + "\n\n" + h.render(node, len(path) == 0)
 	}
 
-	bidang, exists := h.responses.Bidang[bidangKey]
-	if !exists {
-		h.logMessage(userID, pushName, messageID, input, "", "", "", "tidak_dikenali")
-		return h.responses.InvalidChoice + "\n\n" + h.responses.Welcome
+	newPath := append(append([]string{}, path...), input)
+
+	switch child.Type {
+	case config.TypeMenu:
+		// Masuk ke submenu.
+		h.sessions.SetPath(userID, newPath)
+		h.record(userID, pushName, messageID, input, newPath, child.Judul, "terjawab")
+		return h.render(child, false)
+
+	case config.TypePelayanan:
+		// Masuk ke pelayanan, tampilkan submenu info.
+		h.sessions.SetPath(userID, newPath)
+		h.record(userID, pushName, messageID, input, newPath, child.Judul, "terjawab")
+		return h.renderPelayanan(child)
+
+	case config.TypeFAQ:
+		// FAQ: tampilkan jawaban langsung, TIDAK mengubah posisi (tetap di menu ini).
+		h.record(userID, pushName, messageID, input, newPath, child.Judul, "terjawab")
+		footer := h.navFooter(path)
+		return child.Jawaban + footer
 	}
 
-	// Update state ke level bidang
-	h.sessions.Set(userID, &session.State{
-		Level:  "bidang",
-		Bidang: bidangKey,
+	// Tipe tidak dikenal.
+	h.record(userID, pushName, messageID, input, path, "", "tidak_dikenali")
+	return h.root.InvalidChoice + "\n\n" + h.render(node, len(path) == 0)
+}
+
+// handlePelayanan menangani pemilihan info (syarat/cara/petugas) pada node "pelayanan".
+func (h *Handler) handlePelayanan(userID, pushName, messageID, input string, path []string, node *config.Node) string {
+	info := node.Info
+	if info == nil {
+		h.sessions.Reset(userID)
+		return h.render(h.root.Root, true)
+	}
+
+	// Bangun daftar pilihan yang tersedia (hanya field yang terisi).
+	options := h.pelayananOptions(info)
+
+	selected, ok := options[input]
+	if !ok {
+		h.record(userID, pushName, messageID, input, path, node.Judul, "tidak_dikenali")
+		return h.root.InvalidChoice + "\n\n" + h.renderPelayanan(node)
+	}
+
+	// Status pencatatan: jika memilih info petugas, tandai sebagai dialihkan ke petugas.
+	status := "terjawab"
+	if selected.key == "petugas" {
+		status = "dialihkan_ke_petugas"
+	}
+
+	h.record(userID, pushName, messageID, input, path, node.Judul+" - "+selected.label, status)
+
+	footer := "\n\n---\n📌 Ketik *0* untuk kembali ke pilihan pelayanan\n📌 Ketik *menu* untuk ke menu utama"
+	return selected.text + footer
+}
+
+// pelOption merepresentasikan satu pilihan info pada pelayanan.
+type pelOption struct {
+	key   string
+	label string
+	text  string
+}
+
+// pelayananOptions memetakan nomor pilihan ke info pelayanan yang tersedia.
+func (h *Handler) pelayananOptions(info *config.PelayananInfo) map[string]pelOption {
+	options := make(map[string]pelOption)
+	n := 1
+	if strings.TrimSpace(info.Syarat) != "" {
+		options[strconv.Itoa(n)] = pelOption{key: "syarat", label: "Persyaratan", text: info.Syarat}
+		n++
+	}
+	if strings.TrimSpace(info.CaraPengajuan) != "" {
+		options[strconv.Itoa(n)] = pelOption{key: "cara_pengajuan", label: "Cara Pengajuan", text: info.CaraPengajuan}
+		n++
+	}
+	if strings.TrimSpace(info.Petugas) != "" {
+		options[strconv.Itoa(n)] = pelOption{key: "petugas", label: "Hubungi Petugas", text: info.Petugas}
+		n++
+	}
+	return options
+}
+
+// nodeAt menelusuri pohon mengikuti path dan mengembalikan node tujuan.
+// Path kosong mengembalikan node root (menu utama).
+func (h *Handler) nodeAt(path []string) *config.Node {
+	node := h.root.Root
+	for _, key := range path {
+		if node == nil || node.Type != config.TypeMenu {
+			return nil
+		}
+		child, ok := node.Children[key]
+		if !ok {
+			return nil
+		}
+		node = child
+	}
+	return node
+}
+
+// render membentuk teks daftar menu untuk node bertipe "menu".
+// isRoot menentukan apakah memakai teks welcome khusus.
+func (h *Handler) render(node *config.Node, isRoot bool) string {
+	if node == nil {
+		return h.root.Welcome
+	}
+	if isRoot {
+		return h.root.Welcome
+	}
+
+	var b strings.Builder
+	if node.Deskripsi != "" {
+		b.WriteString(node.Deskripsi)
+	} else {
+		b.WriteString("📋 *" + node.Judul + "*\n\nSilakan pilih:")
+	}
+	b.WriteString("\n\n")
+
+	for _, key := range h.orderedKeys(node) {
+		child := node.Children[key]
+		b.WriteString(key + "️⃣ " + child.Judul + "\n")
+	}
+
+	b.WriteString("\n0️⃣ Kembali\n")
+	b.WriteString("\n📌 Ketik *menu* untuk kembali ke menu utama.")
+	return b.String()
+}
+
+// renderPelayanan membentuk submenu info untuk sebuah pelayanan.
+func (h *Handler) renderPelayanan(node *config.Node) string {
+	var b strings.Builder
+	b.WriteString("📋 *" + node.Judul + "*\n\nPilih informasi yang dibutuhkan:\n\n")
+
+	options := h.pelayananOptions(node.Info)
+	// Tampilkan dalam urutan nomor.
+	for i := 1; i <= len(options); i++ {
+		key := strconv.Itoa(i)
+		if opt, ok := options[key]; ok {
+			b.WriteString(key + "️⃣ " + opt.label + "\n")
+		}
+	}
+
+	b.WriteString("\n0️⃣ Kembali\n")
+	b.WriteString("\n📌 Ketik *menu* untuk kembali ke menu utama.")
+	return b.String()
+}
+
+// navFooter memberi petunjuk navigasi setelah menampilkan jawaban FAQ.
+func (h *Handler) navFooter(path []string) string {
+	if len(path) == 0 {
+		return "\n\n---\n📌 Ketik nomor lain untuk pertanyaan lain, atau *menu* untuk menu utama."
+	}
+	return "\n\n---\n📌 Ketik nomor lain untuk pertanyaan lain\n📌 Ketik *0* untuk kembali ke menu sebelumnya\n📌 Ketik *menu* untuk ke menu utama."
+}
+
+// orderedKeys mengembalikan key anak node terurut.
+// Jika node.Order diisi, gunakan itu; jika tidak, urutkan numerik.
+func (h *Handler) orderedKeys(node *config.Node) []string {
+	if len(node.Order) > 0 {
+		return node.Order
+	}
+	keys := make([]string, 0, len(node.Children))
+	for k := range node.Children {
+		keys = append(keys, k)
+	}
+	sort.Slice(keys, func(i, j int) bool {
+		ni, ei := strconv.Atoi(keys[i])
+		nj, ej := strconv.Atoi(keys[j])
+		if ei == nil && ej == nil {
+			return ni < nj
+		}
+		return keys[i] < keys[j]
 	})
-
-	h.logMessage(userID, pushName, messageID, input, bidang.Nama, "", "Pilih bidang", "terjawab")
-	return bidang.Menu
+	return keys
 }
 
-// handleBidangMenu menangani pilihan di submenu bidang
-func (h *Handler) handleBidangMenu(userID, pushName, messageID, input string, state *session.State) string {
-	// Pilihan 0 = kembali ke menu utama
-	if input == "0" {
-		h.sessions.Reset(userID)
-		h.logMessage(userID, pushName, messageID, input, "", "", "Kembali", "terjawab")
-		return h.responses.Welcome
-	}
-
-	pelKeys, exists := pelayananKeys[state.Bidang]
-	if !exists {
-		h.sessions.Reset(userID)
-		return h.responses.Welcome
-	}
-
-	pelKey, exists := pelKeys[input]
-	if !exists {
-		bidang := h.responses.Bidang[state.Bidang]
-		h.logMessage(userID, pushName, messageID, input, bidang.Nama, "", "", "tidak_dikenali")
-		return h.responses.InvalidChoice + "\n\n" + bidang.Menu
-	}
-
-	bidang := h.responses.Bidang[state.Bidang]
-	pelayanan, exists := bidang.Pelayanan[pelKey]
-	if !exists {
-		h.logMessage(userID, pushName, messageID, input, bidang.Nama, "", "", "tidak_dikenali")
-		return h.responses.InvalidChoice + "\n\n" + bidang.Menu
-	}
-
-	// Update state ke level pelayanan
-	h.sessions.Set(userID, &session.State{
-		Level:     "pelayanan",
-		Bidang:    state.Bidang,
-		Pelayanan: pelKey,
-	})
-
-	h.logMessage(userID, pushName, messageID, input, bidang.Nama, pelayanan.Nama, "Pilih pelayanan", "terjawab")
-	return pelayanan.Menu
-}
-
-// handlePelayananMenu menangani pilihan di submenu pelayanan (info detail)
-func (h *Handler) handlePelayananMenu(userID, pushName, messageID, input string, state *session.State) string {
-	// Pilihan 0 = kembali ke menu bidang
-	if input == "0" {
-		bidang := h.responses.Bidang[state.Bidang]
-		h.sessions.Set(userID, &session.State{
-			Level:  "bidang",
-			Bidang: state.Bidang,
-		})
-		h.logMessage(userID, pushName, messageID, input, bidang.Nama, "", "Kembali", "terjawab")
-		return bidang.Menu
-	}
-
-	bidang := h.responses.Bidang[state.Bidang]
-	pelayanan := bidang.Pelayanan[state.Pelayanan]
-
-	infoKey, exists := infoKeys[input]
-	if !exists {
-		h.logMessage(userID, pushName, messageID, input, bidang.Nama, pelayanan.Nama, "", "tidak_dikenali")
-		return h.responses.InvalidChoice + "\n\n" + pelayanan.Menu
-	}
-
-	// Ambil teks informasi berdasarkan key
-	var infoText string
-	switch infoKey {
-	case "persyaratan":
-		infoText = pelayanan.Info.Persyaratan
-	case "prosedur":
-		infoText = pelayanan.Info.Prosedur
-	case "waktu":
-		infoText = pelayanan.Info.Waktu
-	case "formulir":
-		infoText = pelayanan.Info.Formulir
-	case "status":
-		infoText = pelayanan.Info.Status
-	case "kendala":
-		infoText = pelayanan.Info.Kendala
-	}
-
-	// Tentukan status pencatatan
-	logStatus := "terjawab"
-	if infoKey == "kendala" {
-		logStatus = "dialihkan_ke_petugas"
-	}
-
-	jenisInfo := infoLabels[input]
-	h.logMessage(userID, pushName, messageID, input, bidang.Nama, pelayanan.Nama, jenisInfo, logStatus)
-
-	// Tambahkan footer navigasi
-	footer := "\n\n---\n📌 Ketik *0* untuk kembali ke menu pelayanan\n📌 Ketik *menu* untuk ke menu utama"
-	return infoText + footer
-}
-
-// logMessage mencatat pesan ke logger
-func (h *Handler) logMessage(userID, pushName, messageID, pesanAsli, bidang, pelayanan, jenisInfo, status string) {
+// record mencatat interaksi ke logger. Bidang & Pelayanan diturunkan dari path.
+func (h *Handler) record(userID, pushName, messageID, pesanAsli string, path []string, jenisInfo, status string) {
 	if h.log == nil {
 		return
 	}
+
+	bidang, pelayanan := h.deriveCategories(path)
 
 	entry := logger.LogEntry{
 		Timestamp:  time.Now().Format("2006-01-02 15:04:05"),
@@ -229,6 +278,33 @@ func (h *Handler) logMessage(userID, pushName, messageID, pesanAsli, bidang, pel
 		PesanAsli:  pesanAsli,
 		Status:     status,
 	}
-
 	h.log.Log(entry)
+}
+
+// deriveCategories menentukan nama Bidang dan Pelayanan dari path untuk pencatatan.
+// Bidang = judul node pada level 1. Pelayanan = judul node pelayanan/faq terdalam.
+func (h *Handler) deriveCategories(path []string) (bidang, pelayanan string) {
+	if len(path) == 0 {
+		return "", ""
+	}
+
+	node := h.root.Root
+	for i, key := range path {
+		if node == nil || node.Type != config.TypeMenu {
+			break
+		}
+		child, ok := node.Children[key]
+		if !ok {
+			break
+		}
+		if i == 0 {
+			bidang = child.Judul
+		}
+		// Simpan judul pelayanan/faq terdalam sebagai "pelayanan".
+		if child.Type == config.TypePelayanan || child.Type == config.TypeFAQ {
+			pelayanan = child.Judul
+		}
+		node = child
+	}
+	return bidang, pelayanan
 }

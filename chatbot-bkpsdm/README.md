@@ -4,8 +4,9 @@ Chatbot WhatsApp berbasis menu angka untuk layanan informasi BKPSDM (Badan Kepeg
 
 ## Fitur
 
-- Menu interaktif berbasis angka (3 level kedalaman)
-- 3 bidang pelayanan dengan 6 jenis layanan
+- Menu interaktif berbasis angka, bertingkat dinamis (tree)
+- 3 bidang dengan puluhan layanan & FAQ resmi (29 pelayanan + 16 FAQ)
+- Tiga tipe konten: pelayanan (berkas), FAQ (tanya-jawab), dan sub-kategori
 - State/sesi per pengguna (mengetahui posisi menu)
 - Pencatatan otomatis ke Google Spreadsheet
 - Backup CSV lokal jika koneksi ke Google Sheets gagal
@@ -39,29 +40,45 @@ chatbot-bkpsdm/
 
 ## Struktur Menu
 
+Menu bersifat **bertingkat dinamis** (tree). Setiap item bisa berupa salah satu dari tiga tipe:
+
+- **`menu`** — grup/sub-kategori yang berisi pilihan lain.
+- **`pelayanan`** — layanan berkas; menampilkan submenu info: *Persyaratan → Cara Pengajuan → Hubungi Petugas* (hanya bagian yang terisi yang ditampilkan).
+- **`faq`** — tanya-jawab; jawaban langsung ditampilkan tanpa submenu.
+
 ```
 MENU UTAMA
 ├── 1. Bidang Kesejahteraan dan Informasi Kepegawaian
-│   ├── 1. Pengajuan Cuti
-│   │   ├── 1. Persyaratan pelayanan
-│   │   ├── 2. Prosedur pengajuan
-│   │   ├── 3. Waktu penyelesaian
-│   │   ├── 4. Formulir atau tautan pengajuan
-│   │   ├── 5. Cek status pengajuan
-│   │   ├── 6. Kendala dan hubungi petugas
-│   │   └── 0. Kembali
-│   ├── 2. Pencantuman Gelar
-│   │   └── (submenu sama seperti di atas)
-│   └── 0. Kembali ke Menu Utama
-├── 2. Bidang Pengadaan dan Mutasi
-│   ├── 1. Kenaikan Pangkat
-│   ├── 2. Mutasi PNS
-│   └── 0. Kembali ke Menu Utama
-├── 3. Bidang Pengembangan SDM Aparatur
-│   ├── 1. Tugas Belajar
-│   ├── 2. Kenaikan Jabatan Fungsional
-│   └── 0. Kembali ke Menu Utama
+│   ├── 1. Surat Keterangan Bebas Tindakan Disiplin   [pelayanan]
+│   ├── 2. Penghargaan Satya Lencana Karya Satya      [pelayanan]
+│   ├── 3. Pengajuan Klaim Tapera                     [pelayanan]
+│   ├── 4. Kapan dana klaim Tapera masuk?             [faq]
+│   ├── 5. Berapa nominal besaran Tapera?             [faq]
+│   ├── 6. SKP / Sasaran Kinerja Pegawai              [menu] (4 FAQ)
+│   ├── 7. Angka Kredit                               [menu] (5 FAQ)
+│   ├── 8. e-Kinerja Bengkayang                       [menu] (2 FAQ + 2 pelayanan)
+│   └── 9. DMS SIASN                                  [menu] (3 FAQ)
+├── 2. Bidang Pengadaan dan Mutasi Pegawai
+│   ├── 1. Pengajuan Permintaan Pensiun BUP           [pelayanan]
+│   ├── 2. Pengajuan Permintaan Pensiun Janda/Duda    [pelayanan]
+│   ├── 3. Permohonan Mutasi Keluar Pemkab            [pelayanan]
+│   ├── 4. Permohonan Mutasi Masuk Pemkab             [pelayanan]
+│   ├── 5. Permohonan Mutasi Antar Perangkat Daerah   [pelayanan]
+│   ├── 6. Usul Kenaikan Gaji Berkala (KGB)           [pelayanan]
+│   ├── 7. Pengajuan Taspen                           [pelayanan]
+│   ├── 8. Pengajuan Peninjauan Masa Kerja (PMK)      [pelayanan]
+│   └── 9. Usul Kenaikan Pangkat                      [menu] (9 pelayanan)
+├── 3. Bidang Pengembangan Sumber Daya Manusia
+│   ├── 1. Rekomendasi Seleksi Tugas Belajar          [pelayanan]
+│   ├── 2. Berkas Administrasi Calon Tugas Belajar    [pelayanan]
+│   ├── 3. Keterangan Menyelesaikan Pendidikan        [pelayanan]
+│   ├── 4. Pengangkatan Pertama Jabatan Fungsional    [pelayanan]
+│   ├── 5. Penetapan Kenaikan Jabatan Fungsional      [pelayanan]
+│   ├── 6. Pengangkatan JF Perpindahan Jabatan Lain   [pelayanan]
+│   └── 7. Pemberhentian JF Karena Mutasi             [pelayanan]
 ```
+
+Navigasi: ketik **`0`** untuk kembali ke menu sebelumnya, dan **`menu`** untuk kembali ke menu utama.
 
 ## Panduan Instalasi di Windows
 
@@ -175,47 +192,57 @@ Buka URL Web App di browser. Jika muncul response JSON `{"status":"active",...}`
 
 Edit file **`config/responses.json`** untuk mengubah isi jawaban setiap pelayanan.
 
-### Struktur File
+### Struktur File (berbasis pohon/tree)
+
+Seluruh menu didefinisikan sebagai pohon `node`. Ada **tiga tipe node**:
+
+**1. Node `menu`** — grup berisi pilihan lain. Setiap anak diberi nomor (`"1"`, `"2"`, ...) berurutan:
 
 ```json
 {
-  "bidang": {
-    "kesejahteraan": {
-      "pelayanan": {
-        "cuti": {
-          "info": {
-            "persyaratan": "Isi persyaratan resmi di sini...",
-            "prosedur": "Isi prosedur resmi di sini...",
-            "waktu": "Isi waktu penyelesaian resmi...",
-            "formulir": "Isi link formulir resmi...",
-            "status": "Isi cara cek status resmi...",
-            "kendala": "Isi kontak petugas resmi..."
-          }
-        }
-      }
-    }
+  "type": "menu",
+  "judul": "Judul yang tampil di menu induk",
+  "deskripsi": "📋 *Judul*\n\nSilakan pilih:",
+  "children": {
+    "1": { ... node anak ... },
+    "2": { ... node anak ... }
   }
 }
 ```
 
-### Pelayanan yang Tersedia
+**2. Node `pelayanan`** — layanan berkas. Isi bagian yang relevan; bagian yang dikosongkan (`""`) tidak akan ditampilkan sebagai pilihan:
 
-| Bidang | Key Bidang | Pelayanan | Key Pelayanan |
-|--------|-----------|-----------|--------------|
-| Kesejahteraan dan Informasi Kepegawaian | `kesejahteraan` | Pengajuan Cuti | `cuti` |
-| Kesejahteraan dan Informasi Kepegawaian | `kesejahteraan` | Pencantuman Gelar | `gelar` |
-| Pengadaan dan Mutasi | `pengadaan` | Kenaikan Pangkat | `pangkat` |
-| Pengadaan dan Mutasi | `pengadaan` | Mutasi PNS | `mutasi` |
-| Pengembangan SDM Aparatur | `pengembangan` | Tugas Belajar | `tubel` |
-| Pengembangan SDM Aparatur | `pengembangan` | Kenaikan Jabatan Fungsional | `fungsional` |
+```json
+{
+  "type": "pelayanan",
+  "judul": "Nama Pelayanan",
+  "info": {
+    "syarat": "📝 *Syarat:*\n\n1. ...\n2. ...",
+    "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• ...",
+    "petugas": "📞 *Kontak Petugas:*\n\n👤 Nama\n📱 08xx"
+  }
+}
+```
 
-### Cara Edit
+**3. Node `faq`** — tanya-jawab, jawaban langsung tampil:
 
-1. Buka `config/responses.json` dengan text editor
-2. Cari pelayanan yang ingin diisi (misal `"cuti"`)
-3. Ganti teks placeholder di dalam `"info"` dengan informasi resmi
-4. Simpan file
-5. Restart chatbot agar perubahan berlaku
+```json
+{
+  "type": "faq",
+  "judul": "Pertanyaan singkat",
+  "jawaban": "❓ *Pertanyaan?*\n\n✅ Jawaban..."
+}
+```
+
+### Cara Edit / Menambah Pelayanan Baru
+
+1. Buka `config/responses.json` dengan text editor.
+2. **Mengubah isi:** cari node berdasarkan `"judul"`, lalu ubah teks di `syarat`, `cara_pengajuan`, `petugas` (untuk pelayanan) atau `jawaban` (untuk FAQ).
+3. **Menambah item baru:** tambahkan entri di `children` node induk dengan **nomor urut berikutnya** (harus berurutan tanpa lompat, mis. setelah `"7"` gunakan `"8"`).
+4. Pastikan JSON tetap valid (koma, kurung). Uji dengan: `python -m json.tool config/responses.json`.
+5. Restart chatbot agar perubahan berlaku.
+
+> ⚠️ **Penting:** Key anak pada setiap `menu` harus berurutan mulai dari `"1"`. Nomor inilah yang diketik pengguna di WhatsApp.
 
 ### Tips Format Teks WhatsApp
 
@@ -226,65 +253,90 @@ Edit file **`config/responses.json`** untuk mengubah isi jawaban setiap pelayana
 
 ## Contoh Percakapan
 
+### Contoh 1 — Pelayanan berkas (dari menu utama sampai info)
+
 ```
 PENGGUNA: Halo
-BOT: Halo! Selamat datang di Layanan Informasi *BKPSDM Kabupaten Bengkayang* 🏛️
+BOT: Halo! 👋 Selamat datang di *Layanan Informasi BKPSDM Kabupaten Bengkayang* 🏛️
 
-     Silakan pilih menu dengan mengetik angka:
-
+     Silakan pilih bidang layanan dengan mengetik angka:
      1️⃣ Bidang Kesejahteraan dan Informasi Kepegawaian
-     2️⃣ Bidang Pengadaan dan Mutasi
-     3️⃣ Bidang Pengembangan SDM Aparatur
+     2️⃣ Bidang Pengadaan dan Mutasi Pegawai
+     3️⃣ Bidang Pengembangan Sumber Daya Manusia
 
-     📌 Ketik *menu* kapan saja untuk kembali ke menu utama.
      📌 Ketik *0* untuk kembali ke menu sebelumnya.
+     📌 Ketik *menu* kapan saja untuk kembali ke menu utama.
 
 PENGGUNA: 1
 BOT: 📋 *Bidang Kesejahteraan dan Informasi Kepegawaian*
 
-     Pilih layanan:
-     1️⃣ Pengajuan Cuti
-     2️⃣ Pencantuman Gelar
-     0️⃣ Kembali ke Menu Utama
+     Silakan pilih layanan:
+     1️⃣ Surat Keterangan Bebas Tindakan Disiplin
+     2️⃣ Penghargaan Satya Lencana Karya Satya
+     3️⃣ Pengajuan Klaim Tapera
+     4️⃣ Kapan dana klaim Tapera masuk ke rekening?
+     5️⃣ Berapa nominal besaran Tapera saya?
+     6️⃣ SKP / Sasaran Kinerja Pegawai
+     7️⃣ Angka Kredit
+     8️⃣ e-Kinerja Bengkayang
+     9️⃣ DMS SIASN
+
+     0️⃣ Kembali
+     📌 Ketik *menu* untuk kembali ke menu utama.
 
 PENGGUNA: 1
-BOT: 📋 *Pengajuan Cuti*
+BOT: 📋 *Surat Keterangan Bebas Tindakan Disiplin*
 
      Pilih informasi yang dibutuhkan:
-     1️⃣ Persyaratan pelayanan
-     2️⃣ Prosedur pengajuan
-     3️⃣ Waktu penyelesaian
-     4️⃣ Formulir atau tautan pengajuan
-     5️⃣ Cek status pengajuan
-     6️⃣ Kendala dan hubungi petugas
+     1️⃣ Persyaratan
+     2️⃣ Cara Pengajuan
+     3️⃣ Hubungi Petugas
+
      0️⃣ Kembali
+     📌 Ketik *menu* untuk kembali ke menu utama.
 
 PENGGUNA: 1
-BOT: 📝 *Persyaratan Pengajuan Cuti:*
+BOT: 📝 *Syarat Surat Keterangan Bebas Tindakan Disiplin:*
 
-     1. Surat permohonan cuti yang ditandatangani pemohon
-     2. Fotokopi SK terakhir
-     3. Sisa cuti tahun berjalan masih tersedia
-     4. Persetujuan atasan langsung
-     5. Formulir cuti yang telah diisi lengkap
-
-     _(Informasi ini adalah placeholder. Isi resmi akan diperbarui oleh admin BKPSDM.)_
+     1. SK PNS
+     2. SK CPNS
+     3. Surat Rekomendasi Berjenjang
+     4. Surat Bebas Tindak Pidana dari Pengadilan Negeri
 
      ---
-     📌 Ketik *0* untuk kembali ke menu pelayanan
+     📌 Ketik *0* untuk kembali ke pilihan pelayanan
      📌 Ketik *menu* untuk ke menu utama
-
-PENGGUNA: 0
-BOT: 📋 *Pengajuan Cuti*
-
-     Pilih informasi yang dibutuhkan:
-     1️⃣ Persyaratan pelayanan
-     ...
-
-PENGGUNA: menu
-BOT: Halo! Selamat datang di Layanan Informasi *BKPSDM Kabupaten Bengkayang* 🏛️
-     ...
 ```
+
+### Contoh 2 — Sub-kategori dan FAQ (jawaban langsung)
+
+```
+PENGGUNA: 1        (dari menu utama → Bidang Kesejahteraan)
+PENGGUNA: 7        (→ Angka Kredit, sebuah sub-kategori)
+BOT: 📋 *Angka Kredit*
+
+     Silakan pilih pertanyaan:
+     1️⃣ Pesan "File TTD Basah Belum Diunggah"
+     2️⃣ Angka Kredit dari SIASN tidak terakumulasi
+     3️⃣ Angka Kredit yang diklaim tidak terakumulasi
+     4️⃣ Tombol Tambah PAK tidak muncul
+     5️⃣ Error "Request failed with status code 419"
+
+     0️⃣ Kembali
+     📌 Ketik *menu* untuk kembali ke menu utama.
+
+PENGGUNA: 5
+BOT: ❓ *Kenapa muncul pesan error "Request failed with status code 419"?*
+
+     ✅ Silakan logout lalu login lagi.
+
+     ---
+     📌 Ketik nomor lain untuk pertanyaan lain
+     📌 Ketik *0* untuk kembali ke menu sebelumnya
+     📌 Ketik *menu* untuk ke menu utama.
+```
+
+> Catatan: pada FAQ, setelah jawaban tampil pengguna **tetap** di sub-kategori yang sama, sehingga bisa langsung mengetik nomor pertanyaan lain.
 
 ## Keamanan
 

@@ -5,72 +5,79 @@ import (
 	"time"
 )
 
-// State merepresentasikan posisi menu pengguna saat ini
+// State merepresentasikan posisi pengguna dalam pohon menu.
+//
+// Path adalah daftar nomor pilihan dari root ke node saat ini.
+// Contoh:
+//   []            -> di menu utama
+//   ["1"]         -> di Bidang Kesejahteraan
+//   ["1","8"]     -> di sub-kategori e-Kinerja
+//   ["1","8","3"] -> di pelayanan Rekon Absensi (menampilkan submenu info)
 type State struct {
-	// Level menu: "main", "bidang", "pelayanan", "info"
-	Level string
-
-	// Key bidang yang dipilih: "kesejahteraan", "pengadaan", "pengembangan"
-	Bidang string
-
-	// Key pelayanan yang dipilih: "cuti", "gelar", "pangkat", "mutasi", "tubel", "fungsional"
-	Pelayanan string
+	// Path menyimpan jejak navigasi (stack) berupa key nomor pilihan
+	Path []string
 
 	// Waktu terakhir interaksi
 	LastActive time.Time
 }
 
-// Manager mengelola sesi pengguna berdasarkan nomor WhatsApp
+// Manager mengelola sesi pengguna berdasarkan nomor WhatsApp secara thread-safe.
 type Manager struct {
 	mu       sync.RWMutex
 	sessions map[string]*State
 }
 
-// NewManager membuat session manager baru
+// NewManager membuat session manager baru.
 func NewManager() *Manager {
 	return &Manager{
 		sessions: make(map[string]*State),
 	}
 }
 
-// Get mengambil state pengguna, buat baru jika belum ada
+// Get mengambil salinan state pengguna. Jika belum ada, dibuat state baru di menu utama.
 func (m *Manager) Get(userID string) *State {
-	m.mu.RLock()
-	state, exists := m.sessions[userID]
-	m.mu.RUnlock()
+	m.mu.Lock()
+	defer m.mu.Unlock()
 
+	state, exists := m.sessions[userID]
 	if !exists {
 		state = &State{
-			Level:      "main",
+			Path:       []string{},
 			LastActive: time.Now(),
 		}
-		m.mu.Lock()
 		m.sessions[userID] = state
-		m.mu.Unlock()
 	}
 
-	return state
+	// Kembalikan salinan agar caller tidak memodifikasi data internal tanpa lock
+	pathCopy := make([]string, len(state.Path))
+	copy(pathCopy, state.Path)
+	return &State{Path: pathCopy, LastActive: state.LastActive}
 }
 
-// Set menyimpan state pengguna
-func (m *Manager) Set(userID string, state *State) {
+// SetPath menyimpan path baru untuk pengguna.
+func (m *Manager) SetPath(userID string, path []string) {
 	m.mu.Lock()
 	defer m.mu.Unlock()
-	state.LastActive = time.Now()
-	m.sessions[userID] = state
-}
 
-// Reset mengembalikan state pengguna ke menu utama
-func (m *Manager) Reset(userID string) {
-	m.mu.Lock()
-	defer m.mu.Unlock()
+	pathCopy := make([]string, len(path))
+	copy(pathCopy, path)
 	m.sessions[userID] = &State{
-		Level:      "main",
+		Path:       pathCopy,
 		LastActive: time.Now(),
 	}
 }
 
-// CleanupExpired membersihkan sesi yang sudah tidak aktif (opsional)
+// Reset mengembalikan state pengguna ke menu utama.
+func (m *Manager) Reset(userID string) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	m.sessions[userID] = &State{
+		Path:       []string{},
+		LastActive: time.Now(),
+	}
+}
+
+// CleanupExpired membersihkan sesi yang sudah tidak aktif melebihi maxInactive.
 func (m *Manager) CleanupExpired(maxInactive time.Duration) {
 	m.mu.Lock()
 	defer m.mu.Unlock()
