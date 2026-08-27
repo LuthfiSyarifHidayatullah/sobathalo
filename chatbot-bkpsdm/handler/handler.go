@@ -268,15 +268,12 @@ func (h *Handler) record(userID, pushName, messageID, pesanAsli string, path []s
 	bidang, pelayanan := h.deriveCategories(path)
 
 	entry := logger.LogEntry{
-		Timestamp:  time.Now().Format("2006-01-02 15:04:05"),
-		MessageID:  messageID,
-		UserIDHash: logger.HashUserID(userID),
-		PushName:   pushName,
-		Bidang:     bidang,
-		Pelayanan:  pelayanan,
-		JenisInfo:  jenisInfo,
-		PesanAsli:  pesanAsli,
-		Status:     status,
+		Waktu:       time.Now().Format("2006-01-02 15:04"),
+		Pengguna:    pushName,
+		Bidang:      logger.SingkatBidang(bidang),
+		Pelayanan:   pelayanan,
+		InfoDiminta: jenisInfo,
+		Status:      logger.FormatStatus(status),
 	}
 	h.log.Log(entry)
 }
