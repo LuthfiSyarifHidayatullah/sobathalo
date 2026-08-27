@@ -49,7 +49,7 @@ func main() {
 		csvPath = "./data/log_backup.csv"
 	}
 
-	timeout := 10 * time.Second
+	timeout := 30 * time.Second
 	if timeoutStr != "" {
 		if t, err := strconv.Atoi(timeoutStr); err == nil {
 			timeout = time.Duration(t) * time.Second
@@ -206,6 +206,9 @@ func handleIncomingMessage(client *whatsmeow.Client, msgHandler *handler.Handler
 
 // sendReply mengirim pesan balasan ke pengguna
 func sendReply(client *whatsmeow.Client, to types.JID, text string) {
+	// Hapus device part dari JID (WhatsMeow terbaru pakai LID, harus tanpa :device)
+	to = to.ToNonAD()
+
 	msg := &waProto.Message{
 		Conversation: proto.String(text),
 	}
