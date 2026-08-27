@@ -10,32 +10,30 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 	"sync"
 	"time"
 )
 
-// LogEntry berisi data yang akan dicatat
+// LogEntry berisi data yang akan dicatat (format ringkas & mudah dibaca)
 type LogEntry struct {
-	Timestamp   string `json:"timestamp"`
-	MessageID   string `json:"message_id"`
-	UserIDHash  string `json:"user_id_hash"`
-	PushName    string `json:"push_name"`
-	Bidang      string `json:"bidang"`
-	Pelayanan   string `json:"pelayanan"`
-	JenisInfo   string `json:"jenis_info"`
-	PesanAsli   string `json:"pesan_asli"`
-	Status      string `json:"status"` // "terjawab", "tidak_dikenali", "dialihkan_ke_petugas"
+	Waktu     string `json:"waktu"`
+	Pengguna  string `json:"pengguna"`
+	Bidang    string `json:"bidang"`
+	Pelayanan string `json:"pelayanan"`
+	InfoDiminta string `json:"info_diminta"`
+	Status    string `json:"status"`
 }
 
 // Logger mengelola pencatatan ke Google Sheets dan CSV
 type Logger struct {
-	mu            sync.Mutex
-	scriptURL     string
-	scriptToken   string
-	timeout       time.Duration
-	csvPath       string
-	csvFile       *os.File
-	csvWriter     *csv.Writer
+	mu          sync.Mutex
+	scriptURL   string
+	scriptToken string
+	timeout     time.Duration
+	csvPath     string
+	csvFile     *os.File
+	csvWriter   *csv.Writer
 }
 
 // NewLogger membuat Logger baru
@@ -62,8 +60,7 @@ func NewLogger(scriptURL, scriptToken string, timeout time.Duration, csvPath str
 	// Tulis header jika file baru
 	if !fileExists {
 		header := []string{
-			"Timestamp", "MessageID", "UserIDHash", "PushName",
-			"Bidang", "Pelayanan", "JenisInfo", "PesanAsli", "Status",
+			"Waktu", "Pengguna", "Bidang", "Pelayanan", "Info Diminta", "Status",
 		}
 		if err := writer.Write(header); err != nil {
 			file.Close()
@@ -82,10 +79,30 @@ func NewLogger(scriptURL, scriptToken string, timeout time.Duration, csvPath str
 	}, nil
 }
 
-// HashUserID menyamarkan nomor WhatsApp dengan SHA-256
+// HashUserID menyamarkan nomor WhatsApp dengan SHA-256 (dipakai internal, tidak ditampilkan)
 func HashUserID(userID string) string {
 	hash := sha256.Sum256([]byte(userID))
-	return hex.EncodeToString(hash[:8]) // Ambil 8 byte pertama (16 karakter hex)
+	return hex.EncodeToString(hash[:8])
+}
+
+// FormatStatus mengubah status teknis menjadi label emoji yang mudah dibaca
+func FormatStatus(status string) string {
+	switch status {
+	case "terjawab":
+		return "✅ Terjawab"
+	case "tidak_dikenali":
+		return "❓ Tidak dikenali"
+	case "dialihkan_ke_petugas":
+		return "📞 Dialihkan ke petugas"
+	default:
+		return status
+	}
+}
+
+// SingkatBidang menghilangkan kata "Bidang" di depan nama bidang agar lebih ringkas
+func SingkatBidang(bidang string) string {
+	bidang = strings.TrimPrefix(bidang, "Bidang ")
+	return bidang
 }
 
 // Log mencatat pesan ke Google Sheets dan CSV backup
@@ -103,14 +120,11 @@ func (l *Logger) writeCSV(entry LogEntry) {
 	defer l.mu.Unlock()
 
 	record := []string{
-		entry.Timestamp,
-		entry.MessageID,
-		entry.UserIDHash,
-		entry.PushName,
+		entry.Waktu,
+		entry.Pengguna,
 		entry.Bidang,
 		entry.Pelayanan,
-		entry.JenisInfo,
-		entry.PesanAsli,
+		entry.InfoDiminta,
 		entry.Status,
 	}
 
