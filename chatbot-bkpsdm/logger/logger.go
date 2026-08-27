@@ -7,6 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -147,7 +148,26 @@ func (l *Logger) sendToGoogleSheets(entry LogEntry) {
 		return
 	}
 
-	client := &http.Client{Timeout: l.timeout}
+	// Custom HTTP client yang mengikuti redirect sambil tetap POST
+	// (Google Apps Script me-redirect ke googleusercontent.com)
+	client := &http.Client{
+		Timeout: l.timeout,
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			// Pertahankan method POST dan body saat redirect
+			if len(via) >= 10 {
+				return fmt.Errorf("terlalu banyak redirect")
+			}
+			req.Method = via[0].Method
+			req.Header.Set("Content-Type", "application/json")
+			if via[0].GetBody != nil {
+				body, err := via[0].GetBody()
+				if err == nil {
+					req.Body = body
+				}
+			}
+			return nil
+		},
+	}
 
 	req, err := http.NewRequest("POST", l.scriptURL, bytes.NewBuffer(payload))
 	if err != nil {
@@ -156,6 +176,11 @@ func (l *Logger) sendToGoogleSheets(entry LogEntry) {
 	}
 
 	req.Header.Set("Content-Type", "application/json")
+	// Simpan body agar bisa dipakai ulang saat redirect
+	req.GetBody = func() (io.ReadCloser, error) {
+		return io.NopCloser(bytes.NewBuffer(payload)), nil
+	}
+
 	if l.scriptToken != "" {
 		req.Header.Set("Authorization", "Bearer "+l.scriptToken)
 	}
