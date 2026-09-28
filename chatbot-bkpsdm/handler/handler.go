@@ -203,7 +203,7 @@ func (h *Handler) render(node *config.Node, isRoot bool) string {
 
 	for _, key := range h.orderedKeys(node) {
 		child := node.Children[key]
-		b.WriteString(key + "️⃣ " + child.Judul + "\n")
+		b.WriteString(numberEmoji(key) + " " + child.Judul + "\n")
 	}
 
 	b.WriteString("\n0️⃣ Kembali\n")
@@ -221,7 +221,7 @@ func (h *Handler) renderPelayanan(node *config.Node) string {
 	for i := 1; i <= len(options); i++ {
 		key := strconv.Itoa(i)
 		if opt, ok := options[key]; ok {
-			b.WriteString(key + "️⃣ " + opt.label + "\n")
+			b.WriteString(numberEmoji(key) + " " + opt.label + "\n")
 		}
 	}
 
@@ -236,6 +236,17 @@ func (h *Handler) navFooter(path []string) string {
 		return "\n\n---\n📌 Ketik nomor lain untuk pertanyaan lain, atau *menu* untuk menu utama."
 	}
 	return "\n\n---\n📌 Ketik nomor lain untuk pertanyaan lain\n📌 Ketik *0* untuk kembali ke menu sebelumnya\n📌 Ketik *menu* untuk ke menu utama."
+}
+
+// numberEmoji memformat nomor pilihan agar tampil rapi di WhatsApp.
+// Untuk 1 digit (0-9) memakai keycap emoji (mis. "1️⃣"). Untuk angka
+// dua digit atau lebih, keycap emoji tidak dirender dengan benar,
+// sehingga dipakai format tebal "*10.*" agar tetap jelas.
+func numberEmoji(key string) string {
+	if len(key) == 1 && key >= "0" && key <= "9" {
+		return key + "️⃣"
+	}
+	return "*" + key + ".*"
 }
 
 // orderedKeys mengembalikan key anak node terurut.

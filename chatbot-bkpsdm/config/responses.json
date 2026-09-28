@@ -16,7 +16,7 @@
             "type": "pelayanan",
             "judul": "Surat Keterangan Bebas Tindakan Disiplin",
             "info": {
-              "syarat": "📝 *Syarat Surat Keterangan Bebas Tindakan Disiplin:*\n\n1. SK PNS\n2. SK CPNS\n3. Surat Rekomendasi Berjenjang\n4. Surat Bebas Tindak Pidana dari Pengadilan Negeri",
+              "syarat": "📝 *Syarat Surat Keterangan Bebas Tindakan Disiplin:*\n\n1. SK PNS\n2. SK CPNS\n3. SK Pangkat Terakhir\n4. Surat Rekomendasi Berjenjang (berjenjang dari atasan apabila di Puskesmas/Sekolah kemudian dari DISDIKBUD/DINKESKB)\n5. Surat Bebas Tindak Pidana dari Pengadilan Negeri",
               "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap melalui SRIKANDI\n• Mengirimkan berkas lengkap melalui WhatsApp petugas\n• Datang langsung ke Bidang Kesejahteraan dan Informasi Pegawai membawa berkas yang lengkap",
               "petugas": "📞 *Kontak Petugas:*\n\n👤 Susi Krisjuliyanti\n💼 ASDMA Ahli Pertama\n📱 089689527349"
             }
@@ -25,7 +25,7 @@
             "type": "pelayanan",
             "judul": "Penghargaan Satya Lencana Karya Satya",
             "info": {
-              "syarat": "📝 *Syarat Penghargaan Satya Lencana Karya Satya:*\n\n1. Daftar Riwayat Hidup\n2. SK CPNS\n3. SK Jabatan Terakhir\n4. SK Pangkat Terakhir\n5. SLKS terakhir yang sudah dimiliki (bagi pengusul SLKS XXX dan XX)",
+              "syarat": "📝 *Syarat Penghargaan Satya Lencana Karya Satya:*\n\n1. Daftar Riwayat Hidup (format: https://bit.ly/FORMATSLKSPNS)\n2. SK CPNS\n3. SK Jabatan Terakhir\n4. SK Pangkat Terakhir\n5. SLKS terakhir yang sudah dimiliki (bagi pengusul SLKS XXX dan XX)",
               "cara_pengajuan": "📋 *Cara Pengajuan:*\n\n• Mengirimkan berkas lengkap melalui email kesinfopeg@gmail.com\n• Mengirimkan berkas lengkap melalui WhatsApp petugas\n• Datang langsung ke Bidang Kesejahteraan dan Informasi Pegawai membawa berkas yang lengkap",
               "petugas": "📞 *Kontak Petugas:*\n\n👤 Susi Krisjuliyanti\n💼 ASDMA Ahli Pertama\n📱 089689527349"
             }
@@ -162,6 +162,23 @@
                 "type": "faq",
                 "judul": "Jabatan tidak sesuai, apakah bisa dihapus?",
                 "jawaban": "❓ *Apabila ada jabatan yang tidak sesuai, apakah bisa dihapus?*\n\n✅ Bisa dihapus dengan melakukan pengajuan ke admin DMS:\n\n👤 Susi Krisjuliyanti\n💼 ASDMA Ahli Pertama\n📱 089689527349"
+              }
+            }
+          },
+          "10": {
+            "type": "menu",
+            "judul": "Cuti",
+            "deskripsi": "📋 *Cuti*\n\nSilakan pilih pertanyaan:",
+            "children": {
+              "1": {
+                "type": "faq",
+                "judul": "Serba-Serbi Tentang Cuti PNS",
+                "jawaban": "❓ *Serba-Serbi Tentang Cuti PNS*\n\n✅ Tata cara pemberian cuti beserta aturannya dapat dilihat pada link panduan berikut:\nhttps://bit.ly/TentangCutiPNSbky"
+              },
+              "2": {
+                "type": "faq",
+                "judul": "Serba-Serbi Tentang Cuti PPPK",
+                "jawaban": "❓ *Serba-Serbi Tentang Cuti PPPK*\n\n✅ Tata cara pemberian cuti beserta aturannya dapat dilihat pada link panduan berikut:\nhttps://bit.ly/TentangCutiPPPKbky"
               }
             }
           }
