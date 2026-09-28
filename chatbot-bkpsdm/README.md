@@ -62,7 +62,8 @@ MENU UTAMA
 │   ├── 6. SKP / Sasaran Kinerja Pegawai              [menu] (4 FAQ)
 │   ├── 7. Angka Kredit                               [menu] (5 FAQ)
 │   ├── 8. e-Kinerja Bengkayang                       [menu] (2 FAQ + 2 pelayanan)
-│   └── 9. DMS SIASN                                  [menu] (3 FAQ)
+│   ├── 9. DMS SIASN                                  [menu] (3 FAQ)
+│   └── 10. Cuti                                      [menu] (2 FAQ)
 ├── 2. Bidang Pengadaan dan Mutasi Pegawai
 │   ├── 1. Pengajuan Permintaan Pensiun BUP           [pelayanan]
 │   ├── 2. Pengajuan Permintaan Pensiun Janda/Duda    [pelayanan]
