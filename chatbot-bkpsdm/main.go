@@ -64,6 +64,9 @@ func main() {
 	defer log.Close()
 	fmt.Println("[INFO] Logger berhasil diinisialisasi")
 
+	// Uji koneksi ke Google Spreadsheet agar masalah konfigurasi terlihat lebih awal.
+	log.TestConnection()
+
 	// ===== SETUP SESSION MANAGER =====
 	sessionMgr := session.NewManager()
 
