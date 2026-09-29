@@ -33,28 +33,40 @@
 // Fungsi utama untuk menerima POST request dari chatbot
 function doPost(e) {
   try {
+    // Pastikan ada body
+    if (!e || !e.postData || !e.postData.contents) {
+      return jsonOut({ status: 'error', message: 'Request kosong (tidak ada body)' });
+    }
+
     // Parse data JSON dari request body
     var data = JSON.parse(e.postData.contents);
 
+    // Validasi token (opsional). Jika SECRET_TOKEN diset di Script Properties,
+    // maka payload wajib menyertakan field "token" yang cocok.
+    var expected = PropertiesService.getScriptProperties().getProperty('SECRET_TOKEN');
+    if (expected && data.token !== expected) {
+      return jsonOut({ status: 'error', message: 'Token tidak valid' });
+    }
+
     // Validasi data minimal
     if (!data.waktu && !data.pengguna) {
-      return ContentService.createTextOutput(
-        JSON.stringify({ status: 'error', message: 'Data tidak lengkap' })
-      ).setMimeType(ContentService.MimeType.JSON);
+      return jsonOut({ status: 'error', message: 'Data tidak lengkap' });
     }
 
     // Tulis ke spreadsheet
     writeToSheet(data);
 
-    return ContentService.createTextOutput(
-      JSON.stringify({ status: 'success', message: 'Data berhasil dicatat' })
-    ).setMimeType(ContentService.MimeType.JSON);
+    return jsonOut({ status: 'success', message: 'Data berhasil dicatat' });
 
   } catch (error) {
-    return ContentService.createTextOutput(
-      JSON.stringify({ status: 'error', message: error.toString() })
-    ).setMimeType(ContentService.MimeType.JSON);
+    return jsonOut({ status: 'error', message: error.toString() });
   }
+}
+
+// Helper untuk membuat respons JSON
+function jsonOut(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 // Fungsi untuk menulis data ke sheet

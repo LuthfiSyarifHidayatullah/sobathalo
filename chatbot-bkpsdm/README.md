@@ -384,8 +384,29 @@ BOT: ❓ *Kenapa muncul pesan error "Request failed with status code 419"?*
 | QR Code tidak muncul | Pastikan terminal mendukung karakter Unicode. Coba Windows Terminal |
 | Error "gcc not found" | Install TDM-GCC dan pastikan ada di PATH |
 | Bot tidak membalas | Cek apakah pesan dikirim ke chat pribadi (bukan grup) |
-| Google Sheets tidak terisi | Cek URL di .env, pastikan Web App sudah di-deploy |
+| Google Sheets tidak terisi | Lihat bagian **"Google Spreadsheet tidak terhubung"** di bawah tabel ini. |
 | "Gagal memuat konfigurasi" | Pastikan file `config/responses.json` ada dan valid JSON |
+
+### 🔌 Google Spreadsheet Tidak Terhubung
+
+Saat chatbot dijalankan, program otomatis menguji koneksi ke Google Script dan menampilkan salah satu pesan berikut di terminal:
+
+- `[LOGGER] ✅ Koneksi Google Spreadsheet OK (Web App aktif).` → koneksi berhasil.
+- `[LOGGER] GOOGLE_SCRIPT_URL kosong — pencatatan hanya ke CSV lokal.` → URL belum diisi di `.env`.
+- `[LOGGER] Tidak bisa menghubungi Google Script: ...` → URL salah atau tidak ada internet.
+- `[LOGGER] ⚠️ Google Script membalas status 401/403 ...` → Web App belum di-deploy dengan akses **Anyone**.
+
+Jika data tidak masuk ke spreadsheet, periksa daftar berikut secara berurutan:
+
+1. **URL benar & lengkap.** `GOOGLE_SCRIPT_URL` di `.env` harus berakhiran `/exec` (bukan `/dev`). Contoh:
+   `https://script.google.com/macros/s/XXXXXXXX/exec`
+2. **Akses Web App = Anyone.** Saat Deploy, bagian *Who has access* harus **Anyone** (bukan "Only myself"). Jika salah, hasil GET di browser akan meminta login Google, bukan menampilkan JSON.
+3. **Re-deploy setelah mengubah script.** Setiap kali kode Apps Script diubah, buat **New deployment** (atau *Manage deployments → Edit → Version: New version*). Deployment lama tidak otomatis memakai kode baru.
+4. **Token cocok.** Jika Anda mengisi `SECRET_TOKEN` di *Script Properties*, nilainya **harus sama persis** dengan `GOOGLE_SCRIPT_TOKEN` di `.env`. Jika tidak, script membalas `{"status":"error","message":"Token tidak valid"}` dan data ditolak. Kalau tidak ingin memakai token, kosongkan keduanya.
+5. **Uji manual.** Buka `GOOGLE_SCRIPT_URL` di browser. Jika muncul JSON `{"status":"active",...}` berarti Web App aktif. Jika muncul halaman login/izin Google, ulangi langkah 2.
+6. **Cek log terminal.** Kegagalan pengiriman dicetak sebagai `[LOGGER] Google Sheets ...`. Pesan `Token tidak valid` → masalah token; `HTTP 401/403` → masalah akses deploy.
+
+> Selama Google Sheets bermasalah, chatbot **tetap berjalan normal** dan semua log tersimpan di `data/log_backup.csv`. Perbaiki koneksi kapan saja tanpa kehilangan data.
 
 ### ⚠️ Tentang Error "Client outdated (405)"
 
